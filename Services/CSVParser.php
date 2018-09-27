@@ -11,6 +11,6 @@ class CSVParser
     private $local_path = __DIR__;
 
     public function parseToDataset($filename) {
-        $path;
+        // TODO: parse CSV at location input/$filename
     }
 }
