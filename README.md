@@ -10,13 +10,13 @@
 7. Install the "xdebug" browser extension
 8. In the prefernces of the extension, set the IDE key to "PHPSTORM" and hit save
 9. In PHPSTORM, go to Languages & Frameworks -> PHP. Click the 3 dots beside "CLI Interpreter". Click the "+" icon and select "usr/bin/php"
-10. Start your php server (instructions below under "Recurring Tasks")
+10. Start your php server (instructions below under "Spin up the site")
 11. Go to "localhost:8000", and the click the xdebug bug icon in your address bar, and set it to "Debug". Refresh the page
 12. Set a breakpoint anywhere in the codebase
 13. In PHPStorm you will see a dialog around "Incoming Connection". Press ok
 14. Now you should see that the php script has paused on your breakpoint! You're done!
 
-### To spin up the site:
+### Spin up the site:
 1. Go to the directory for this project
 2. Enter the following on the command line:
     <code>php -S localhost:8000</code> 
