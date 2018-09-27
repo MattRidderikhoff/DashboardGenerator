@@ -6,7 +6,7 @@
 3. Run the following on the coomand line: <code>php -i</code> and copy all of the output
 4. Paste the output from (3) into the textbox here: https://xdebug.org/wizard.php
 5. Follow the instructions the xdebug wizard gives you
-6. Edit php.ini again, using <code>sudo nanon php.ini</code> in /etc, and add/replace this line: <code>xdebug.remote_port="9000"</code>
+6. Edit php.ini again, using <code>sudo nano php.ini</code> in /etc, and add/replace this line: <code>xdebug.remote_port="9000"</code>
 7. Install the "xdebug" browser extension
 8. In the prefernces of the extension, set the IDE key to "PHPSTORM" and hit save
 9. In PHPSTORM, go to Languages & Frameworks -> PHP. Click the 3 dots beside "CLI Interpreter". Click the "+" icon and select "usr/bin/php"
