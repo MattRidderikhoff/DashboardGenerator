@@ -86,6 +86,9 @@
             "ref": "5f514d9d3b8a8aac3d62ae6a86b18b90ed0c7826"
         }
     },
+    "symfony/serializer": {
+        "version": "v4.1.4"
+    },
     "symfony/twig-bridge": {
         "version": "v4.1.4"
     },

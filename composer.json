@@ -9,6 +9,7 @@
         "symfony/console": "*",
         "symfony/flex": "^1.1",
         "symfony/framework-bundle": "*",
+        "symfony/serializer": "*",
         "symfony/twig-bundle": "*",
         "symfony/yaml": "*",
         "twig/twig": "^2.0"
