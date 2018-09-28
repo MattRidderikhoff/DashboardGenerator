@@ -10,15 +10,17 @@ namespace App\Controller;
 
 use App\Services\Tokenizer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class BaseController extends AbstractController
 {
-    public function renderHomepage(Tokenizer $tokenizer) {
+    public function renderHomepage(SerializerInterface $serializer, Tokenizer $tokenizer) {
         $input_path = str_replace('Controller', '', __DIR__ ) . "Input/";
 
         // 1. Parse dataset into a structure we can use
         $dataset_path = $input_path . 'movies_2011.csv';
-        $dataset = $this->get('serializer')->decode(file_get_contents($dataset_path), 'csv');
+        $dataset = $serializer->decode(file_get_contents($dataset_path), 'csv');
 
         // 2. Tokenize Input.txt and generate an AST
         $dsl_input_path = $input_path . 'input.txt';
