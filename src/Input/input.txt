@@ -2,11 +2,19 @@ Create Bar
 Title is "exBarChart"
 X is "Genre"
 Y is "Gross"
-Order descending
+Order X descending
 End
 
 Create Line
 Title is "exLineChart"
 X is "Time"
 Y is "percentile"
+Order Y ascending
+End
+
+Create Group
+Title is "exGroup"
+Orient horizontal
+Add "exBarChart"
+Add "exLineChart"
 End

@@ -11,6 +11,7 @@ namespace App\Controller;
 use App\Entities\BarChart;
 use App\Entities\ChartGroup;
 use App\Entities\LineChart;
+use App\Entities\Node;
 use App\Entities\TokenManager;
 use App\Services\Tokenizer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -37,7 +38,7 @@ class BaseController extends AbstractController
         $nodes = [];
         while ($token_manager->hasNextToken()) {
 
-            if ($token_manager->getAndCheckNextToken('Create')) {
+            if ($token_manager->getAndCheckNextToken(Node::NODE_START_TOKEN)) {
 
                 $node = null;
                 $next_token = $token_manager->getNextToken();

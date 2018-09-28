@@ -10,6 +10,8 @@ namespace App\Entities;
 
 abstract class Node
 {
+    const NODE_START_TOKEN = 'Create';
+    const NODE_END_TOKEN = 'End';
     const TITLE_TOKEN = 'Title is';
 
     public function parse($token_manager) {

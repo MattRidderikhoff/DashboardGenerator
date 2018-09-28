@@ -2,9 +2,15 @@
 
 namespace App\Services;
 
+use App\Entities\Chart;
+use App\Entities\ChartGroup;
+use App\Entities\Node;
+
 class Tokenizer
 {
-    const LITERALS = ['Create', 'Title is', 'X is', 'Y is', 'Order', 'Each line is', 'Orient', 'Add', 'End'];
+    const LITERALS = [Node::NODE_START_TOKEN, Node::TITLE_TOKEN, Chart::X_AXIS_TOKEN, Chart::Y_AXIS_TOKEN,
+        Chart::X_ORDER_TOKEN, Chart::Y_ORDER_TOKEN, 'Each line is', ChartGroup::ORIENT_TOKEN, ChartGroup::ADD_CHART_TOKEN,
+        Node::NODE_END_TOKEN];
 
     public function generateTokens($input_lines) {
 

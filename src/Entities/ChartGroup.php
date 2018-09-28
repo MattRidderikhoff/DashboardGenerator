@@ -16,6 +16,7 @@ class ChartGroup extends Node
 
     private $title;
     private $chart_titles = [];
+    private $orientation;
 
     public function evaluate()
     {
@@ -26,10 +27,13 @@ class ChartGroup extends Node
     {
         switch ($token) {
             case self::ADD_CHART_TOKEN:
-                $chart_titles[] = $token_manager->getNextToken();
+                $this->chart_titles[] = $token_manager->getNextToken();
                 break;
             case self::TITLE_TOKEN:
                 $this->title = $token_manager->getNextToken();
+                break;
+            case self::ORIENT_TOKEN:
+                $this->orientation = $token_manager->getNextToken();
                 break;
             default:
                 // discard value for unsupported attribute
