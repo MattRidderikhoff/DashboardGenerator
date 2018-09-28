@@ -1,6 +1,0 @@
-Create Bar
-Title is "ExampleBarChart"
-X is "Genre"
-Y is "Gross"
-Order descending
-End

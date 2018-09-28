@@ -18,7 +18,7 @@
 13. In PHPStorm you will see a dialog around "Incoming Connection". Press ok
 14. Now you should see that the php script has paused on your breakpoint! You're done!
 ##Composer And Twig
-1. In Terminal, cd into DashboardCreator/src
+1. In Terminal, cd into DashboardCreator
 2. Run the following commands to install composer: <br />
 <code>php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"</code><br />
 <code>php -r "if (hash_file('SHA384', 'composer-setup.php') === '93b54496392c062774670ac18b134c3b3a95e5a5e5c8f1a9f115f203b75bf9a129d5daa8ba6a13e2cc8a1da0806388a8') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"</code><br />
@@ -33,8 +33,8 @@
 
 
 ### Spin up the site:
-1. Go to the directory for this project
+1. cd into DashboardCreator
 2. Enter the following on the command line:
-    <code>php -S localhost:8000</code> 
+    <code>php bin/console server:run</code> 
 3. In any browser go to "localhost:8000"
  
