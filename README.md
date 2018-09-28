@@ -6,6 +6,7 @@
 2. Run the following on the command line: <code>pecl install xdebug</code>
 3. Run the following on the command line: <code>php -i</code> and copy all of the output
 4. Paste the output from (3) into the textbox here: https://xdebug.org/wizard.php
+- Warning, if you are on Mac, run xcode-select --install, otherwise phpize will give you error for missing some files.
 5. Follow the instructions the xdebug wizard gives you
 6. Edit your php.ini by typing <code>cd /etc</code> in your root folder, and edit it using <code>sudo nano php.ini</code>. Then add/replace this line: <code>xdebug.remote_port="9000"</code>
 7. Install the "xdebug" browser extension
