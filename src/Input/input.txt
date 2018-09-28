@@ -1,6 +1,12 @@
 Create Bar
-Title is "ExampleBarChart"
+Title is "exBarChart"
 X is "Genre"
 Y is "Gross"
 Order descending
+End
+
+Create Line
+Title is "exLineChart"
+X is "Time"
+Y is "percentile"
 End

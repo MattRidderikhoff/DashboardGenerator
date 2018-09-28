@@ -24,9 +24,4 @@ class Tokenizer
 
         return $cleaned_tokens;
     }
-
-    public function generateAST($tokens) {
-        // Todo: complete
-        return $tokens;
-    }
 }
