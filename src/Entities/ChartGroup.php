@@ -14,7 +14,6 @@ class ChartGroup extends Node
     const ORIENT_TOKEN = 'Orient';
     const ADD_CHART_TOKEN = 'Add';
 
-    private $title;
     private $chart_titles = [];
     private $orientation;
 

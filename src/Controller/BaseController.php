@@ -34,7 +34,7 @@ class BaseController extends AbstractController
         $tokens = $tokenizer->generateTokens($dsl_input_string);
         $token_manager = new TokenManager($tokens);
 
-        // 2b. generate AST
+        // 2b. generate nodes of the AST
         $nodes = [];
         while ($token_manager->hasNextToken()) {
 
@@ -57,14 +57,21 @@ class BaseController extends AbstractController
                 $nodes[] = $node;
                 $node->parse($token_manager);
             } else {
-                throw new \Exception("Incorrectly formatted DSL (didn't start chart/group with 'Create'");
+                throw new \Exception("Incorrectly formatted DSL (didn't start chart/group with 'Create')");
             }
         }
 
         /** 3. Evaluate AST and generate the javascript + html for each individual chart **/
-        /** 4. Group chart html if applicable **/
+        // todo: ensure title uniqueness
+
+        /** 4. Arrange Charts in ChartGroups, if applicable **/
         /** 5. Return HTML and javascript back to index.php **/
 
-        return $this->render('base.html.twig');
+        $nodes_json = [];
+        foreach ($nodes as $node) {
+            $nodes_json[] = json_encode($node);
+        }
+        return $this->render('base.html.twig',
+            ['nodes' => $nodes,]);
     }
 }

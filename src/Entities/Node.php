@@ -14,6 +14,8 @@ abstract class Node
     const NODE_END_TOKEN = 'End';
     const TITLE_TOKEN = 'Title is';
 
+    protected $title;
+
     public function parse($token_manager) {
         while (!$token_manager->checkNextToken('End')) {
             $this->addAttribute($token_manager, $token_manager->getNextToken());
@@ -26,4 +28,8 @@ abstract class Node
     abstract public function addAttribute(TokenManager $token_manager, $token);
 
     abstract public function evaluate();
+
+    public function getTitle() {
+        return $this->title;
+    }
 }

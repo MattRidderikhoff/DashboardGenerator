@@ -9,7 +9,11 @@
     </head>
     <body>
         {% block body %}
-            <canvas id='myChart' width='100' height='100'></canvas>
+
+            {% for node in nodes  %}
+                <canvas id='{{ node.getTitle() }}' width='100' height='100'></canvas>
+            {% endfor %}
+
         {% endblock %}
 
         {% block javascripts %}
@@ -17,7 +21,7 @@
             {#<script src="./vendor/node_modules/chartjs/chart.js"></script>#}
 
             <script>
-                var ctx = document.getElementById('myChart');
+                var ctx = document.getElementById('exBarChart');
                 var myChart = new Chart(ctx, {
                     type: 'bar',
                     data: {
