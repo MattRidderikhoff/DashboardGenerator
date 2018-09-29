@@ -1,7 +1,6 @@
 # DashboardGenerator
 
-### First time installation
-## PHP and debugging
+## First time installation
 1. Run the following on the command line (you need homebrew installed): <code>brew install php</code>
 2. Run the following on the command line: <code>pecl install xdebug</code>
 3. Run the following on the command line: <code>php -i</code> and copy all of the output
