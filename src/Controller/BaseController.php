@@ -19,6 +19,14 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class BaseController extends AbstractController
 {
+    /**
+     * @param SerializerInterface $serializer
+     * @param Tokenizer $tokenizer
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @throws \Exception
+     */
     public function renderHomepage(SerializerInterface $serializer, Tokenizer $tokenizer) {
         $input_path = str_replace('Controller', '', __DIR__ ) . "Input/";
 
@@ -35,6 +43,23 @@ class BaseController extends AbstractController
         $token_manager = new TokenManager($tokens);
 
         // 2b. generate nodes of the AST
+        $nodes = $this->generateNodes($token_manager);
+
+        /** 3. Evaluate each node with the provided dataset **/
+        // todo: ensure title uniqueness
+
+        /** 4. Arrange Charts in ChartGroups, if applicable **/
+        // todo: this is done in base.html.twig, and may require making a .js file
+
+        /** 5. Render the page with the evaluated nodes **/
+        $charts_and_groups = $this->separateChartsAndGroups($nodes);
+
+        return $this->render('base.html.twig',
+            ['charts' => $charts_and_groups['charts'],
+             'groups' => $charts_and_groups['groups']]);
+    }
+
+    private function generateNodes(TokenManager $token_manager) {
         $nodes = [];
         while ($token_manager->hasNextToken()) {
 
@@ -61,24 +86,19 @@ class BaseController extends AbstractController
             }
         }
 
-        /** 3. Evaluate AST and generate the javascript + html for each individual chart **/
-        // todo: ensure title uniqueness
+        return $nodes;
+    }
 
-        /** 4. Arrange Charts in ChartGroups, if applicable **/
-        /** 5. Return HTML and javascript back to index.php **/
-
-        $charts = [];
-        $groups = [];
+    private function separateChartsAndGroups($nodes) {
+        $charts_and_groups = [];
         foreach ($nodes as $node) {
             if ($node->getType() == Node::TYPE_CHART_GROUP) {
-                $groups[] = $node;
+                $charts_and_groups['groups'][] = $node;
             } else {
-                $charts[] = $node;
+                $charts_and_groups['charts'][] = $node;
             }
         }
 
-        return $this->render('base.html.twig',
-            ['charts' => $charts,
-             'groups' => $groups]);
+        return $charts_and_groups;
     }
 }
