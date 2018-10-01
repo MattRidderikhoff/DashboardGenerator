@@ -17,6 +17,11 @@ class ChartGroup extends Node
     private $chart_titles = [];
     private $orientation;
 
+    public function __construct()
+    {
+        $this->type = Node::TYPE_CHART_GROUP;
+    }
+
     public function evaluate()
     {
         // TODO: Implement evaluate() method.

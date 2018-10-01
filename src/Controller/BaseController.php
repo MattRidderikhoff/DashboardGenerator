@@ -72,6 +72,6 @@ class BaseController extends AbstractController
             $nodes_json[] = json_encode($node);
         }
         return $this->render('base.html.twig',
-            ['nodes' => $nodes,]);
+            ['nodes' => $nodes]);
     }
 }

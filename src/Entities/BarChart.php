@@ -16,6 +16,11 @@ class BarChart extends Chart
     private $x_order;
     private $y_order;
 
+    public function __construct()
+    {
+        $this->type = Node::TYPE_LINE_CHART;
+    }
+
     public function evaluate()
     {
         // TODO: Implement evaluate() method.
