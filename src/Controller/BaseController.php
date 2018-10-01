@@ -46,7 +46,7 @@ class BaseController extends AbstractController
         $nodes = $this->generateNodes($token_manager);
 
         /** 3. Evaluate each node with the provided dataset **/
-        // todo: ensure title uniqueness
+
 
         /** 4. Arrange Charts in ChartGroups, if applicable **/
         // todo: this is done in base.html.twig, and may require making a .js file

@@ -22,7 +22,7 @@ class ChartGroup extends Node
         $this->type = Node::TYPE_CHART_GROUP;
     }
 
-    public function evaluate()
+    public function evaluate($dataset)
     {
         // TODO: Implement evaluate() method.
     }
@@ -44,5 +44,9 @@ class ChartGroup extends Node
                 $token_manager->getNextToken();
                 break;
         }
+    }
+
+    public function getChartTitles() {
+        return $this->getChartTitles();
     }
 }

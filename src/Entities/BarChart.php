@@ -21,7 +21,7 @@ class BarChart extends Chart
         $this->type = Node::TYPE_LINE_CHART;
     }
 
-    public function evaluate()
+    public function evaluate($dataset)
     {
         // TODO: Implement evaluate() method.
     }

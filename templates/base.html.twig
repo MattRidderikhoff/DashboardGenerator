@@ -4,18 +4,24 @@
         <meta charset="UTF-8">
         <title>{% block title %}DashboardCreator{% endblock %}</title>
         {% block stylesheets %}
-            {# .css references go here #}
+            {# .css references go here, if required #}
         {% endblock %}
     </head>
     <body>
         {% block body %}
 
-            {% for group in groups  %}
-                {# do grouping in here. Up to you how this is implemented (may require javascript) #}
+            {# track charts that are already in groups, so they can be excluded below #}
+            {% set grouped_charts = [] %}
+            {% for group in groups %}
+                <div id='{{ group.getTitle() }}'>
+                    {# todo: add the 'canvas' tags for the charts in this group. Add their titles to grouped_charts #}
+                </div>
             {% endfor %}
 
             {% for chart in charts  %}
-                <canvas id='{{ chart.getTitle() }}' width='100' height='100'></canvas>
+                {% if chart.getTitle() not in grouped_charts %}
+                    <canvas id='{{ chart.getTitle() }}' width='100' height='100'></canvas>
+                {% endif %}
             {% endfor %}
 
         {% endblock %}
@@ -26,6 +32,8 @@
             {% for chart in charts %}
                 {% if chart.getType() == 'bar_chart' %}
                     {% include 'bar.html.twig' with {'title': chart.getTitle()} only %}
+                {% elseif chart.getType() == 'line_chart' %}
+                    {# todo: fill this in with line.html.twig #}
                 {% endif %}
             {% endfor %}
         {% endblock %}

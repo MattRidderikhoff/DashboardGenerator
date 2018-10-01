@@ -32,7 +32,7 @@ abstract class Node
 
     abstract public function addAttribute(TokenManager $token_manager, $token);
 
-    abstract public function evaluate();
+    abstract public function evaluate($dataset);
 
     public function getTitle() {
         return $this->title;
