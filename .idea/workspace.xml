@@ -4,9 +4,6 @@
     <list default="true" id="c765d634-85ba-44ce-bf43-10b3f6e81e46" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/Controller/BaseController.php" afterPath="$PROJECT_DIR$/src/Controller/BaseController.php" />
-      <change beforePath="$PROJECT_DIR$/src/Entities/BarChart.php" afterPath="$PROJECT_DIR$/src/Entities/BarChart.php" />
-      <change beforePath="$PROJECT_DIR$/src/Entities/ChartGroup.php" afterPath="$PROJECT_DIR$/src/Entities/ChartGroup.php" />
-      <change beforePath="$PROJECT_DIR$/src/Entities/LineChart.php" afterPath="$PROJECT_DIR$/src/Entities/LineChart.php" />
       <change beforePath="$PROJECT_DIR$/src/Entities/Node.php" afterPath="$PROJECT_DIR$/src/Entities/Node.php" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" afterPath="$PROJECT_DIR$/templates/base.html.twig" />
     </list>
@@ -25,8 +22,8 @@
       <file leaf-file-name="BaseController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/BaseController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="74" column="30" lean-forward="false" selection-start-line="74" selection-start-column="30" selection-end-line="74" selection-end-column="30" />
+            <state relative-caret-position="290">
+              <caret line="81" column="32" lean-forward="false" selection-start-line="81" selection-start-column="32" selection-end-line="81" selection-end-column="32" />
               <folding>
                 <element signature="e#132#158#0#PHP" expanded="true" />
               </folding>
@@ -37,8 +34,8 @@
       <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="137">
-              <caret line="20" column="102" lean-forward="false" selection-start-line="20" selection-start-column="102" selection-end-line="20" selection-end-column="102" />
+            <state relative-caret-position="1">
+              <caret line="12" column="34" lean-forward="false" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -57,8 +54,8 @@
       <file leaf-file-name="Node.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Entities/Node.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-148">
-              <caret line="14" column="41" lean-forward="false" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
+            <state relative-caret-position="105">
+              <caret line="12" column="30" lean-forward="false" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -114,7 +111,11 @@
       <find>[x</find>
       <find>throw new \e</find>
       <find>dump</find>
+      <find>node</find>
     </findStrings>
+    <replaceStrings>
+      <replace>chart</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -131,13 +132,13 @@
         <option value="$PROJECT_DIR$/src/Services/Tokenizer.php" />
         <option value="$PROJECT_DIR$/src/Input/input.txt" />
         <option value="$PROJECT_DIR$/src/Entities/Chart.php" />
-        <option value="$PROJECT_DIR$/src/Entities/Node.php" />
         <option value="$PROJECT_DIR$/src/Entities/ChartGroup.php" />
         <option value="$PROJECT_DIR$/src/Entities/BarChart.php" />
         <option value="$PROJECT_DIR$/src/Entities/LineChart.php" />
-        <option value="$PROJECT_DIR$/src/Controller/BaseController.php" />
         <option value="$PROJECT_DIR$/templates/bar.html.twig" />
+        <option value="$PROJECT_DIR$/src/Entities/Node.php" />
         <option value="$PROJECT_DIR$/templates/base.html.twig" />
+        <option value="$PROJECT_DIR$/src/Controller/BaseController.php" />
       </list>
     </option>
   </component>
@@ -156,6 +157,7 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/vendor/node_modules" />
   </component>
+  <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpServers">
     <servers>
       <server host="127.0.0.1" id="c814ede4-bec6-4d54-9659-07dfdfe296ce" name="127.0.0.1" port="8000" />
@@ -328,12 +330,12 @@
       <option name="presentableId" value="Default" />
       <updated>1538107447984</updated>
       <workItem from="1538107449468" duration="3217000" />
-      <workItem from="1538110895049" duration="12675000" />
+      <workItem from="1538110895049" duration="13279000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15892000" />
+    <option name="totallyTimeSpent" value="16496000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="778" extended-state="6" />
@@ -387,13 +389,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/src/Controller/BaseController.php</url>
-          <line>73</line>
-          <option name="timeStamp" value="32" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="33" />
     </breakpoint-manager>
     <watches-manager />
@@ -535,8 +530,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Entities/Node.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-148">
-          <caret line="14" column="41" lean-forward="false" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
+        <state relative-caret-position="105">
+          <caret line="12" column="30" lean-forward="false" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
           <folding />
         </state>
       </provider>
@@ -559,8 +554,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/BaseController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="74" column="30" lean-forward="false" selection-start-line="74" selection-start-column="30" selection-end-line="74" selection-end-column="30" />
+        <state relative-caret-position="290">
+          <caret line="81" column="32" lean-forward="false" selection-start-line="81" selection-start-column="32" selection-end-line="81" selection-end-column="32" />
           <folding>
             <element signature="e#132#158#0#PHP" expanded="true" />
           </folding>
@@ -569,8 +564,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="20" column="102" lean-forward="false" selection-start-line="20" selection-start-column="102" selection-end-line="20" selection-end-column="102" />
+        <state relative-caret-position="1">
+          <caret line="12" column="34" lean-forward="false" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
           <folding />
         </state>
       </provider>

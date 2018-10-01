@@ -10,7 +10,7 @@ namespace App\Entities;
 
 abstract class Node
 {
-    const TYPE_CHART_GROUP = 'chart_group';
+    const TYPE_CHART_GROUP = 'group';
     const TYPE_BAR_CHART = 'bar_chart';
     const TYPE_LINE_CHART = 'line_chart';
 

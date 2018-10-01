@@ -67,11 +67,18 @@ class BaseController extends AbstractController
         /** 4. Arrange Charts in ChartGroups, if applicable **/
         /** 5. Return HTML and javascript back to index.php **/
 
-        $nodes_json = [];
+        $charts = [];
+        $groups = [];
         foreach ($nodes as $node) {
-            $nodes_json[] = json_encode($node);
+            if ($node->getType() == Node::TYPE_CHART_GROUP) {
+                $groups[] = $node;
+            } else {
+                $charts[] = $node;
+            }
         }
+
         return $this->render('base.html.twig',
-            ['nodes' => $nodes]);
+            ['charts' => $charts,
+             'groups' => $groups]);
     }
 }
