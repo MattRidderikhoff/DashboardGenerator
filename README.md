@@ -24,9 +24,9 @@
 <code>php composer-setup.php</code><br />
 <code>php -r "unlink('composer-setup.php');"</code><br />
 <code>mv composer.phar /usr/local/bin/composer</code><br />
-3. Run the following command to install twig:
+3. From within the DashboardGenerator directory, run the following command to install twig:
 <code>composer install</code><br />
-4. Run the following to install chartjs:
+4. From within the DashboardGenerator directory, run the following to install chartjs:
 <code>npm install --prefix ./vendor</code><br />
 
 
