@@ -9,6 +9,8 @@
 namespace App\Entities;
 
 
+use Twig\Token;
+
 class LineChart extends Chart
 {
     private $x_axis;
@@ -26,7 +28,7 @@ class LineChart extends Chart
         // TODO: Implement evaluate() method.
     }
 
-    public function addAttribute($token_manager, $token)
+    public function addAttribute(TokenManager $token_manager, $token)
     {
         switch ($token) {
             case self::X_AXIS_TOKEN:
