@@ -23,7 +23,37 @@ class BarChart extends Chart
 
     public function evaluate($dataset)
     {
+        $data = [];
+        foreach ($dataset as $row) {
 
+            // TODO: add in type-checking regex service
+            // ASSUME: x are distinct
+
+            $x_value = trim($row[$this->x_axis]);
+            if (!isset($data[$x_value])) {
+                $data[$x_value]['x_value'] = $x_value;
+                $data[$x_value]['y_value'] = 0;
+                $data[$x_value]['size'] = 0;
+            }
+
+            ++$data[$x_value]['size'];
+            $data[$x_value]['y_value'] += intval($row[$this->y_axis]);
+
+            if ($data[$x_value]['x_value'] === "?")
+            {
+                unset($data[$x_value]);
+            }
+        }
+
+        foreach ($data as $column) {
+            $this->data['x_value'][] = $column['x_value'];
+
+            // divide y_value by size?
+            $this->data['y_value'][] = $column['y_value'];
+        }
+
+        // temp
+        return $this->data;
     }
 
     public function addAttribute(TokenManager $token_manager, $token)
