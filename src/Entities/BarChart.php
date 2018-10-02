@@ -21,12 +21,11 @@ class BarChart extends Chart
         $this->type = Node::TYPE_BAR_CHART;
     }
 
+    // TODO: add in type-checking regex service?
     public function evaluate($dataset)
     {
         $data = [];
         foreach ($dataset as $row) {
-
-            // TODO: add in type-checking regex service?
 
             $x_value = trim($row[$this->x_axis]);
             if (!isset($data[$x_value])) {
@@ -35,11 +34,6 @@ class BarChart extends Chart
             }
 
             $data[$x_value]['y_values'] += intval($row[$this->y_axis]);
-
-            if ($data[$x_value]['x_values'] === "?")
-            {
-                unset($data[$x_value]);
-            }
         }
 
         $this->data['colours'] = [];
