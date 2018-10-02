@@ -30,23 +30,23 @@ class BarChart extends Chart
 
             $x_value = trim($row[$this->x_axis]);
             if (!isset($data[$x_value])) {
-                $data[$x_value]['x_value'] = $x_value;
-                $data[$x_value]['y_value'] = 0;
+                $data[$x_value]['x_values'] = $x_value;
+                $data[$x_value]['y_values'] = 0;
             }
 
-            $data[$x_value]['y_value'] += intval($row[$this->y_axis]);
+            $data[$x_value]['y_values'] += intval($row[$this->y_axis]);
 
-            if ($data[$x_value]['x_value'] === "?")
+            if ($data[$x_value]['x_values'] === "?")
             {
                 unset($data[$x_value]);
             }
         }
 
-        $this->data['colour'] = [];
+        $this->data['colours'] = [];
         foreach ($data as $column) {
-            $this->data['x_value'][] = $column['x_value'];
-            $this->data['y_value'][] = $column['y_value'];
-            $this->data['colour'][] = $this->getNewColour($this->data['colour']);
+            $this->data['x_values'][] = $column['x_values'];
+            $this->data['y_values'][] = $column['y_values'];
+            $this->data['colours'][] = $this->getNewColour($this->data['colours']);
         }
     }
 
