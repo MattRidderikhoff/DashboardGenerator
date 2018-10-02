@@ -1,15 +1,6 @@
 {% set data = chart.getData() %}
 
 <script>
-    function getRandomColor() {
-        var letters = '0123456789ABCDEF'.split('');
-        var color = '#';
-        for (var i = 0; i < 6; i++ ) {
-            color += letters[Math.floor(Math.random() * 16)];
-        }
-        return color;
-    }
-
     var ctx = document.getElementById('{{ chart.getTitle() }}');
     var myChart = new Chart(ctx, {
         type: 'bar',
@@ -18,7 +9,7 @@
             datasets: [{
                 label: "{{ chart.getTitle() }}",
                 data: [{% for y_value in data.y_value %}{{ y_value }},{% endfor %}], {# here goes the Y vals #}
-                backgroundColor: [{% for color in data.x_value %}getRandomColor(),{% endfor %}],
+                backgroundColor: [{% for colour in data.colour %}"{{ colour }}",{% endfor %}],
                 borderWidth: 1
             }]
         },

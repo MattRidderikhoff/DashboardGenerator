@@ -45,15 +45,12 @@ class BarChart extends Chart
             }
         }
 
+        $this->data['colour'] = [];
         foreach ($data as $column) {
             $this->data['x_value'][] = $column['x_value'];
-
-            // divide y_value by size?
             $this->data['y_value'][] = $column['y_value'];
+            $this->data['colour'][] = $this->getNewColour($this->data['colour']);
         }
-
-        // temp
-        return $this->data;
     }
 
     public function addAttribute(TokenManager $token_manager, $token)

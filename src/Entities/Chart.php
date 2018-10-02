@@ -17,4 +17,21 @@ abstract class Chart extends Node
     const Y_ORDER_TOKEN = 'Order Y';
 
     protected $data = [];
+
+    protected function getRandomColour() {
+        $letters = str_split('0123456789ABCDEF');
+        $colour = '#';
+        for ($i = 0; $i < 6; $i++) {
+            $colour .= $letters[random_int(0, 15)];
+        }
+        return $colour;
+    }
+
+    protected function getNewColour($colours) {
+        $random_colour = $this->getRandomColour();
+        while (in_array($random_colour, $colours)) {
+            $random_colour = $this->getRandomColour();
+        }
+        return $random_colour;
+    }
 }
