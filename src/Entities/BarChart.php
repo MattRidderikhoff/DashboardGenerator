@@ -26,17 +26,14 @@ class BarChart extends Chart
         $data = [];
         foreach ($dataset as $row) {
 
-            // TODO: add in type-checking regex service
-            // ASSUME: x are distinct
+            // TODO: add in type-checking regex service?
 
             $x_value = trim($row[$this->x_axis]);
             if (!isset($data[$x_value])) {
                 $data[$x_value]['x_value'] = $x_value;
                 $data[$x_value]['y_value'] = 0;
-                $data[$x_value]['size'] = 0;
             }
 
-            ++$data[$x_value]['size'];
             $data[$x_value]['y_value'] += intval($row[$this->y_axis]);
 
             if ($data[$x_value]['x_value'] === "?")

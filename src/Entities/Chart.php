@@ -27,9 +27,9 @@ abstract class Chart extends Node
         return $colour;
     }
 
-    protected function getNewColour($colours) {
+    protected function getNewColour($existing_colours) {
         $random_colour = $this->getRandomColour();
-        while (in_array($random_colour, $colours)) {
+        while (in_array($random_colour, $existing_colours)) {
             $random_colour = $this->getRandomColour();
         }
         return $random_colour;
