@@ -20,7 +20,7 @@ class LineChart extends Chart
 
     public function __construct()
     {
-        $this->type = Node::TYPE_BAR_CHART;
+        $this->type = Node::TYPE_LINE_CHART;
     }
 
     public function evaluate($dataset)

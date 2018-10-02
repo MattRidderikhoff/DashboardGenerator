@@ -18,12 +18,12 @@ class BarChart extends Chart
 
     public function __construct()
     {
-        $this->type = Node::TYPE_LINE_CHART;
+        $this->type = Node::TYPE_BAR_CHART;
     }
 
     public function evaluate($dataset)
     {
-        // TODO: Implement evaluate() method.
+
     }
 
     public function addAttribute(TokenManager $token_manager, $token)
@@ -49,5 +49,9 @@ class BarChart extends Chart
                 $token_manager->getNextToken();
                 break;
         }
+    }
+
+    public function getData() {
+        return $this->data;
     }
 }

@@ -20,7 +20,7 @@
 
             {% for chart in charts  %}
                 {% if chart.getTitle() not in grouped_charts %}
-                    <canvas id='{{ chart.getTitle() }}' width='100' height='100'></canvas>
+                    <canvas id='{{ chart.getTitle() }}' width='100px' height='100px'></canvas>
                 {% endif %}
             {% endfor %}
 
@@ -31,7 +31,7 @@
 
             {% for chart in charts %}
                 {% if chart.getType() == 'bar_chart' %}
-                    {% include 'bar.html.twig' with {'title': chart.getTitle()} only %}
+                    {% include 'bar.html.twig' with {'chart': chart} only %}
                 {% elseif chart.getType() == 'line_chart' %}
                     {# todo: fill this in with line.html.twig #}
                 {% endif %}
