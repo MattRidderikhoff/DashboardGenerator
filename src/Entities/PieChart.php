@@ -19,9 +19,32 @@ class PieChart extends Chart
         $this->type = Node::TYPE_PIE_CHART;
     }
 
+    // Note: currently this is a duplicate of BarChart->evaluate()
     public function evaluate($dataset)
     {
-        // TODO: Implement evaluate() method.
+        $data = [];
+        foreach ($dataset as $row) {
+
+            $x_value = trim($row[$this->x_axis]);
+            if (!isset($data[$x_value])) {
+                $data[$x_value]['x_value'] = $x_value;
+                $data[$x_value]['y_value'] = 0;
+            }
+
+            $data[$x_value]['y_value'] += intval($row[$this->y_axis]);
+        }
+
+        $this->data['colours'] = [];
+        foreach ($data as $column) {
+            $x_value = $column['x_value'];
+            $this->data['x_values'][$x_value] = $x_value;
+            $this->data['y_values'][$x_value] = $column['y_value'];
+            $this->data['colours'][$x_value] = $this->getNewColour($this->data['colours']);
+        }
+
+        if (isset($this->order)) {
+            $this->sortByX();
+        }
     }
 
     public function addAttribute(TokenManager $token_manager, $token)

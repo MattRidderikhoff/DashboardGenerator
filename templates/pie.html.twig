@@ -4,17 +4,16 @@
     new Chart(document.getElementById('{{ chart.getTitle() }}'), {
         type: 'pie',
         data: {
-            labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+            labels: [{% for x_value in data.x_values %}"{{ x_value }}",{% endfor %}],
             datasets: [{
-                label: "Population (millions)",
-                backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-                data: [2478,5267,734,784,433]
+                backgroundColor: [{% for colour in data.colours %}"{{ colour }}",{% endfor %}],
+                data: [{% for y_value in data.y_values %}{{ y_value }},{% endfor %}]
             }]
         },
         options: {
             title: {
                 display: true,
-                text: 'Predicted world population (millions) in 2050'
+                text: '{{ chart.getTitle() }}'
             }
         }
     });

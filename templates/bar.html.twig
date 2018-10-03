@@ -10,6 +10,12 @@
                 data: [{% for y_value in data.y_values %}{{ y_value }},{% endfor %}],
                 backgroundColor: [{% for colour in data.colours %}"{{ colour }}",{% endfor %}]
             }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: '{{ chart.getTitle() }}'
+            }
         }
     });
 </script>
