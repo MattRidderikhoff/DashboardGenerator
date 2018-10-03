@@ -1,8 +1,7 @@
 {% set data = chart.getData() %}
 
 <script>
-    var ctx = document.getElementById('{{ chart.getTitle() }}');
-    new Chart(ctx, {
+    new Chart(document.getElementById('{{ chart.getTitle() }}'), {
         type: 'bar',
         data: {
             labels: [{% for x_value in data.x_values %}"{{ x_value }}",{% endfor %}],

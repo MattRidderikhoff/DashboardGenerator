@@ -12,6 +12,12 @@ Y is "percentile"
 Order Y ascending
 End
 
+Create Pie
+Title is "exPieChart"
+X is "Genre"
+Y is "Gross"
+End
+
 Create Group
 Title is "exGroup"
 Orient horizontal

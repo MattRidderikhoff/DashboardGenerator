@@ -68,8 +68,4 @@ class BarChart extends Chart
                 break;
         }
     }
-
-    public function getData() {
-        return $this->data;
-    }
 }

@@ -2,22 +2,21 @@
 /**
  * Created by PhpStorm.
  * User: matthewridderikhoff
- * Date: 2018-09-28
- * Time: 1:40 PM
+ * Date: 2018-10-03
+ * Time: 11:17 AM
  */
 
 namespace App\Entities;
 
-class LineChart extends Chart
+
+class PieChart extends Chart
 {
     private $x_axis;
     private $y_axis;
-    private $x_order;
-    private $y_order;
 
     public function __construct()
     {
-        $this->type = Node::TYPE_LINE_CHART;
+        $this->type = Node::TYPE_PIE_CHART;
     }
 
     public function evaluate($dataset)
@@ -38,10 +37,7 @@ class LineChart extends Chart
                 $this->title = $token_manager->getNextToken();
                 break;
             case self::X_ORDER_TOKEN:
-                $this->x_order = $token_manager->getNextToken();
-                break;
-            case self::Y_ORDER_TOKEN:
-                $this->y_order = $token_manager->getNextToken();
+                $this->order = $token_manager->getNextToken();
                 break;
             default:
                 // discard value for unsupported attribute
