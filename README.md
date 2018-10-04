@@ -39,7 +39,7 @@
 
 # DSL For Users
 ## DSL Example
-
+```
 Create Bar
 Title is “My Bar Chart”
 X is “Name” as “AliasX”
@@ -66,7 +66,7 @@ Title “My Report Chart”
 Add “My Bar Chart”
 Add “My Pie Chart”
 End
-
+```
 ## DSL EBNF Grammar
 
 ### Program Grammar
@@ -144,9 +144,11 @@ Y ::=
 
 ### Identifier Grammar
 
-Define ::= "is" Identifier
+Define ::= 
+	"is" Identifier
 
-Nickname ::= "as" Identifier
+Nickname ::= "
+	as" Identifier
 
 ### Basic Grammar
 
