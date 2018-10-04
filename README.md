@@ -38,7 +38,7 @@
  
 
 # DSL For Users
-##DSL Example
+## DSL Example
 
 Create Bar
 Title is “My Bar Chart”
