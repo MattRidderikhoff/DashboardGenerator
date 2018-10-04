@@ -38,7 +38,7 @@
  
 
 # DSL For Users
-## DSL Example
+## Generic DSL Example
 ```
 Create Bar
 Title is “My Bar Chart”
@@ -67,6 +67,39 @@ Add “My Bar Chart”
 Add “My Pie Chart”
 End
 ```
+
+## Real DSL Example
+https://www.kaggle.com/neuromusic/avocado-prices
+
+Create Bar
+Title is “Price vs Volume”
+X is “Total Volume” as “Volume”
+Y is “Average Price” as “Price”
+Order Y ascending
+End
+
+Create Pie
+Title is “Avocado Bags by Year”
+Category is “Year”
+Value is “Total Bags”
+End
+
+Create Line
+Title is “Price vs Year”
+X is “Year”
+Y is "Average Price"
+Lines are “Region”
+End
+
+Create Group
+Orient horizontal
+Title “My Avacado Report Chart”
+Add “Price vs Volume”
+Add “Avocado Bags by Year”
+Add “Price vs Year”
+End
+
+
 ## DSL EBNF Grammar
 
 ### Program Grammar
@@ -163,4 +196,3 @@ STRING ::=
 
 NUM ::=
 	0|1|2|3|4|5|6|7|8|9
-
