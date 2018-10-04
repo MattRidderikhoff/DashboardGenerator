@@ -36,3 +36,131 @@
     <code>php bin/console server:run</code> 
 3. In any browser go to "localhost:8000"
  
+
+# DSL For Users
+## DSL Example
+```
+Create Bar
+Title is “My Bar Chart”
+X is “Name” as “AliasX”
+Y is “Total” as “AliasY”
+Order (X||Y) (ascending||descending)
+End
+
+Create Pie
+Title is “My Pie Chart”
+Category is “MovieTitle”
+Value is “Gross Domestic”
+End
+
+Create Line
+Title is “My Line Chart”
+X is “Age”
+Y is SUM “Points” by “Age” as “Points”
+Lines are “Team”
+End
+
+Create Group
+Orient horizontal
+Title “My Report Chart”
+Add “My Bar Chart”
+Add “My Pie Chart”
+End
+```
+## DSL EBNF Grammar
+
+### Program Grammar
+
+Program ::=
+	"Create"
+
+BarProgram ::=
+	"Bar" (Title BarStm | BarStm Title)
+
+GroupProgram ::=
+	"Group" (Title GroupStm | GroupStm Title)
+
+LineProgram ::=
+	"Line" (Title LineStm | LineStm Title)
+
+PieProgram ::=
+	"Pie" (Title PieStm | PieStm Title)
+
+### Abstract Grammar
+
+BarStm ::=
+	DefineXYStm Order 
+	| Order DefineXYStm
+
+GroupStm ::=
+	Orient AddGraph
+	| AddGraph Orient
+
+LineStm ::=
+	DefineXYStm Lines
+	| Lines DefineXYStm
+
+PieStm ::=
+	DefineCVStm
+
+### High Level Grammar
+
+AddGraph ::=
+	"Add" Identifier AddGraph*
+
+DefineCVStm ::=
+	Category Value 
+	| Value Category
+
+DefineXYStm ::= 
+	X Y 
+	| Y X
+
+Lines ::=
+	"Lines" "are" IDENTIFIER
+
+Order ::=
+	"Order" ("X"|"Y") ("ascending" | "descending")
+
+Orient ::=
+	"Orient" ("horizontal" | "vertical")
+
+Title ::= 
+	"Title" Define
+
+### Intermediate Grammar
+
+Category ::=
+	"Category" Define
+	
+Value ::=
+	"Value" Define
+
+X ::= 
+	"X" Define Nickname?
+
+Y ::= 
+	"Y" Define Nickname?
+
+### Identifier Grammar
+
+Define ::= 
+	"is" Identifier
+
+Nickname ::= "
+	as" Identifier
+
+### Basic Grammar
+
+Identifier ::= 
+	IDENTIFIER+
+
+IDENTIFIER ::= 
+	(STRING|NUM)+
+
+STRING ::=
+	"a"|"b"|"c"|"d"|"e"|"f"|"g"|"h"|"i"|"j"|"k"|"l"|"m"|"n"|"o"|"p"|"q"|"r"|"s"|"t"|"u"|"v"|"w"|"x"|"y"|"z"
+
+NUM ::=
+	0|1|2|3|4|5|6|7|8|9
+
