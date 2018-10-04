@@ -69,8 +69,10 @@ End
 ```
 
 ## Real DSL Example
-https://www.kaggle.com/neuromusic/avocado-prices
 
+### Example 1
+[Dataset](https://www.kaggle.com/neuromusic/avocado-prices)
+```
 Create Bar
 Title is “Price vs Volume”
 X is “Total Volume” as “Volume”
@@ -98,14 +100,57 @@ Add “Price vs Volume”
 Add “Avocado Bags by Year”
 Add “Price vs Year”
 End
+```
 
+### Example 2
+[Dataset](https://www.kaggle.com/smid80/weatherww2)
+```
+Create Group
+Orient horizontal
+Title “Preciptation by Year Report”
+Add “Precip by Year”
+End
 
+Create Line
+Title is “Precip by Year”
+Lines are “STA”
+Y is "Precip"
+X is “Year”
+End
+```
+
+### Example 3
+[Dataset](https://www.kaggle.com/mehdidag/black-friday)
+```
+Create Line
+Title is “Purchase vs Occupation by Gender”
+X is “Occupation”
+Y is "Purchase"
+Lines are “Gender”
+End
+
+Create Pie
+Title is “Purchase by Gender”
+Category is “Gender”
+Value is “Purchase”
+End
+
+Create Group
+Orient horizontal
+Title “Black Friday Report”
+Add “Purchase by Gender”
+Add “Purchase vs Occupation by Gender”
+End
+```
 ## DSL EBNF Grammar
 
 ### Program Grammar
 
 Program ::=
-	"Create"
+	"Create" ProgramType "End" Program*
+	
+ProgramType ::=
+	BarProgram | GroupProgram | LineProgram | PieProgram
 
 BarProgram ::=
 	"Bar" (Title BarStm | BarStm Title)
