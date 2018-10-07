@@ -33,7 +33,7 @@
                 {% if chart.getType() == 'bar_chart' %}
                     {% include 'bar.html.twig' with {'chart': chart} only %}
                 {% elseif chart.getType() == 'line_chart' %}
-                    {# todo: fill this in with line.html.twig #}
+                    {% include 'line.html.twig' with {'chart': chart} only %}
                 {% elseif chart.getType() == 'pie_chart' %}
                     {% include 'pie.html.twig' with {'chart': chart} only %}
                 {% endif %}
