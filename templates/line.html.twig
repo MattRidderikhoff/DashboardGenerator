@@ -18,6 +18,12 @@
                     },
                 {% endfor %}
             ]
+        },
+        options: {
+            title: {
+                display: true,
+                text: '{{ chart.getTitle() }}'
+            }
         }
     });
 </script>

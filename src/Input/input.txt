@@ -6,7 +6,7 @@ Order X descending
 End
 
 Create Line
-Title is "Average Price vs Year"
+Title is "Total Volume vs Year"
 X is "year"
 Y is "Total Volume"
 Lines are "region"
