@@ -198,7 +198,7 @@ Lines ::=
 	"Lines" "are" IDENTIFIER
 
 Order ::=
-	"Order" ("X"|"Y") ("ascending" | "descending")
+	"Order" ("X"|"Y"|"Category") ("ascending" | "descending")
 
 Orient ::=
 	"Orient" ("horizontal" | "vertical")
@@ -235,6 +235,9 @@ Identifier ::=
 
 IDENTIFIER ::= 
 	(STRING|NUM)+
+	
+COMPARATOR ::=
+    (<|>)
 
 STRING ::=
 	"a"|"b"|"c"|"d"|"e"|"f"|"g"|"h"|"i"|"j"|"k"|"l"|"m"|"n"|"o"|"p"|"q"|"r"|"s"|"t"|"u"|"v"|"w"|"x"|"y"|"z"

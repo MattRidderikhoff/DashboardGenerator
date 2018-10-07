@@ -2,22 +2,25 @@
 /**
  * Created by PhpStorm.
  * User: matthewridderikhoff
- * Date: 2018-09-28
- * Time: 1:40 PM
+ * Date: 2018-10-03
+ * Time: 11:17 AM
  */
 
 namespace App\Entities;
 
-class LineChart extends Chart
+
+class PieChart extends Chart
 {
-    private $x_axis;
-    private $y_axis;
-    private $x_order;
-    private $y_order;
+    const CATEGORY_TOKEN = "Category is";
+    const VALUE_TOKEN = "Value is";
+    const CATEGORY_ORDER_TOKEN = "Order Category";
+
+    private $x_axis; // Category
+    private $y_axis; // Value
 
     public function __construct()
     {
-        $this->type = Node::TYPE_LINE_CHART;
+        $this->type = Node::TYPE_PIE_CHART;
     }
 
     public function evaluate($dataset)
@@ -36,38 +39,33 @@ class LineChart extends Chart
             }
         }
 
+        $this->data['colours'] = [];
         foreach ($data as $column) {
             $x_value = $column['x_value'];
             $this->data['x_values'][$x_value] = $x_value;
             $this->data['y_values'][$x_value] = $column['y_value'];
+            $this->data['colours'][$x_value] = $this->getNewColour($this->data['colours']);
         }
 
-        if (isset($this->x_order)) {
-            $this->order = $this->x_order;
+        if (isset($this->order)) {
             $this->sortByX();
-        } else if (isset($this->y_order)) {
-            $this->order = $this->y_order;
-            $this->sortByY();
         }
     }
 
     public function addAttribute(TokenManager $token_manager, $token)
     {
         switch ($token) {
-            case self::X_AXIS_TOKEN:
+            case self::CATEGORY_TOKEN:
                 $this->x_axis = $token_manager->getNextToken();
                 break;
-            case self::Y_AXIS_TOKEN:
+            case self::VALUE_TOKEN:
                 $this->y_axis = $token_manager->getNextToken();
                 break;
             case self::TITLE_TOKEN:
                 $this->title = $token_manager->getNextToken();
                 break;
-            case self::X_ORDER_TOKEN:
-                $this->x_order = $token_manager->getNextToken();
-                break;
-            case self::Y_ORDER_TOKEN:
-                $this->y_order = $token_manager->getNextToken();
+            case self::CATEGORY_ORDER_TOKEN:
+                $this->order = $token_manager->getNextToken();
                 break;
             case self::ONLY_USE_TOKEN:
                 $this->separateFilter($token_manager);
@@ -77,13 +75,5 @@ class LineChart extends Chart
                 $token_manager->getNextToken();
                 break;
         }
-    }
-
-    public function getData() {
-        return $this->data;
-    }
-
-    protected function sort() {
-
     }
 }
