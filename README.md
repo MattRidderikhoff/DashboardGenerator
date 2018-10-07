@@ -36,3 +36,208 @@
     <code>php bin/console server:run</code> 
 3. In any browser go to "localhost:8000"
  
+
+# DSL For Users
+## Generic DSL Example
+```
+Create Bar
+Title is “My Bar Chart”
+X is “Name” as “AliasX”
+Y is “Total” as “AliasY”
+Order (X||Y) (ascending||descending)
+End
+
+Create Pie
+Title is “My Pie Chart”
+Category is “MovieTitle”
+Value is “Gross Domestic”
+End
+
+Create Line
+Title is “My Line Chart”
+X is “Age”
+Y is SUM “Points” by “Age” as “Points”
+Lines are “Team”
+End
+
+Create Group
+Orient horizontal
+Title “My Report Chart”
+Add “My Bar Chart”
+Add “My Pie Chart”
+End
+```
+
+## Real DSL Example
+
+### Example 1
+[Dataset](https://www.kaggle.com/neuromusic/avocado-prices)
+```
+Create Bar
+Title is “Price vs Volume”
+X is “Total Volume” as “Volume”
+Y is “Average Price” as “Price”
+Order Y ascending
+End
+
+Create Pie
+Title is “Avocado Bags by Year”
+Category is “Year”
+Value is “Total Bags”
+End
+
+Create Line
+Title is “Price vs Year”
+X is “Year”
+Y is "Average Price"
+Lines are “Region”
+End
+
+Create Group
+Orient horizontal
+Title “My Avacado Report Chart”
+Add “Price vs Volume”
+Add “Avocado Bags by Year”
+Add “Price vs Year”
+End
+```
+
+### Example 2
+[Dataset](https://www.kaggle.com/smid80/weatherww2)
+```
+Create Group
+Orient horizontal
+Title “Preciptation by Year Report”
+Add “Precip by Year”
+End
+
+Create Line
+Title is “Precip by Year”
+Lines are “STA”
+Y is "Precip"
+X is “Year”
+End
+```
+
+### Example 3
+[Dataset](https://www.kaggle.com/mehdidag/black-friday)
+```
+Create Line
+Title is “Purchase vs Occupation by Gender”
+X is “Occupation”
+Y is "Purchase"
+Lines are “Gender”
+End
+
+Create Pie
+Title is “Purchase by Gender”
+Category is “Gender”
+Value is “Purchase”
+End
+
+Create Group
+Orient horizontal
+Title “Black Friday Report”
+Add “Purchase by Gender”
+Add “Purchase vs Occupation by Gender”
+End
+```
+## DSL EBNF Grammar
+
+### Program Grammar
+
+Program ::=
+	"Create" ProgramType "End" Program*
+	
+ProgramType ::=
+	BarProgram | GroupProgram | LineProgram | PieProgram
+
+BarProgram ::=
+	"Bar" (Title BarStm | BarStm Title)
+
+GroupProgram ::=
+	"Group" (Title GroupStm | GroupStm Title)
+
+LineProgram ::=
+	"Line" (Title LineStm | LineStm Title)
+
+PieProgram ::=
+	"Pie" (Title PieStm | PieStm Title)
+
+### Abstract Grammar
+
+BarStm ::=
+	DefineXYStm Order 
+	| Order DefineXYStm
+
+GroupStm ::=
+	Orient AddGraph
+	| AddGraph Orient
+
+LineStm ::=
+	DefineXYStm Lines
+	| Lines DefineXYStm
+
+PieStm ::=
+	DefineCVStm
+
+### High Level Grammar
+
+AddGraph ::=
+	"Add" Identifier AddGraph*
+
+DefineCVStm ::=
+	Category Value 
+	| Value Category
+
+DefineXYStm ::= 
+	X Y 
+	| Y X
+
+Lines ::=
+	"Lines" "are" IDENTIFIER
+
+Order ::=
+	"Order" ("X"|"Y") ("ascending" | "descending")
+
+Orient ::=
+	"Orient" ("horizontal" | "vertical")
+
+Title ::= 
+	"Title" Define
+
+### Intermediate Grammar
+
+Category ::=
+	"Category" Define
+	
+Value ::=
+	"Value" Define
+
+X ::= 
+	"X" Define Nickname?
+
+Y ::= 
+	"Y" Define Nickname?
+
+### Identifier Grammar
+
+Define ::= 
+	"is" Identifier
+
+Nickname ::= "
+	as" Identifier
+
+### Basic Grammar
+
+Identifier ::= 
+	IDENTIFIER+
+
+IDENTIFIER ::= 
+	(STRING|NUM)+
+
+STRING ::=
+	"a"|"b"|"c"|"d"|"e"|"f"|"g"|"h"|"i"|"j"|"k"|"l"|"m"|"n"|"o"|"p"|"q"|"r"|"s"|"t"|"u"|"v"|"w"|"x"|"y"|"z"
+
+NUM ::=
+	0|1|2|3|4|5|6|7|8|9
