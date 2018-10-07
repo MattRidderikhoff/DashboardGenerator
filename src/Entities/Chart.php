@@ -13,6 +13,7 @@ abstract class Chart extends Node
 {
     const X_AXIS_TOKEN = 'X is';
     const Y_AXIS_TOKEN = 'Y is';
+    const LINE_TOKEN = 'Lines are';
     const X_ORDER_TOKEN = 'Order X';
     const Y_ORDER_TOKEN = 'Order Y';
 

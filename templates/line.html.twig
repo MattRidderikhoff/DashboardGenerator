@@ -6,13 +6,18 @@
         type: 'line',
         data: {
             labels: [{% for x_value in data.x_values %}"{{ x_value }}",{% endfor %}],
-            datasets: [{
-                label: "{{ chart.getTitle() }}",
-                data: [{% for y_value in data.y_values %}{{ y_value }},{% endfor %}],
-                pointBackgroundColor: "rgba(52,179,255,1)",
-                borderColor:"rgba(180, 234, 255, 1)",
-                backgroundColor: "rgba(180, 234, 255, 0.2)"
-            }]
+            datasets: [
+                {% for line in data.lines %}
+                    {
+                        label: "{{ line }}",
+                        data: [{% for y_value in data.y_values[line] %}{{ y_value }},{% endfor %}],
+                        fill:false,
+                        pointBackgroundColor: "{{ data.colours[line] }}",
+                        borderColor:"{{ data.colours[line] }}",
+                        backgroundColor:"{{ data.colours[line] }}"
+                    },
+                {% endfor %}
+            ]
         }
     });
 </script>

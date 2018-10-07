@@ -9,7 +9,7 @@ use App\Entities\Node;
 class Tokenizer
 {
     const LITERALS = [Node::NODE_START_TOKEN, Node::TITLE_TOKEN, Chart::X_AXIS_TOKEN, Chart::Y_AXIS_TOKEN,
-        Chart::X_ORDER_TOKEN, Chart::Y_ORDER_TOKEN, 'Each line is', ChartGroup::ORIENT_TOKEN, ChartGroup::ADD_CHART_TOKEN,
+        Chart::X_ORDER_TOKEN, Chart::Y_ORDER_TOKEN, Chart::LINE_TOKEN, ChartGroup::ORIENT_TOKEN, ChartGroup::ADD_CHART_TOKEN,
         Node::NODE_END_TOKEN];
 
     public function generateTokens($input_lines) {
