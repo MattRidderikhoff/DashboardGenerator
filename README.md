@@ -198,7 +198,7 @@ Lines ::=
 	"Lines" "are" IDENTIFIER
 
 Order ::=
-	"Order" ("X"|"Y") ("ascending" | "descending")
+	"Order" ("X"|"Y"|"Category") ("ascending" | "descending")
 
 Orient ::=
 	"Orient" ("horizontal" | "vertical")

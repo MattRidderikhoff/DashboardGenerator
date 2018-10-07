@@ -22,6 +22,10 @@ abstract class Chart extends Node
     protected $order;
     protected $data = [];
 
+    public function getData() {
+        return $this->data;
+    }
+
     protected function getRandomColour() {
         $letters = str_split('0123456789ABCDEF');
         $colour = '#';

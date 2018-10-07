@@ -8,9 +8,6 @@
 
 namespace App\Entities;
 
-
-use Twig\Token;
-
 class LineChart extends Chart
 {
     private $x_axis;

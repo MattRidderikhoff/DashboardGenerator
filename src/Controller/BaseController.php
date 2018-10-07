@@ -12,6 +12,7 @@ use App\Entities\BarChart;
 use App\Entities\ChartGroup;
 use App\Entities\LineChart;
 use App\Entities\Node;
+use App\Entities\PieChart;
 use App\Entities\TokenManager;
 use App\Services\Tokenizer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -75,6 +76,9 @@ class BaseController extends AbstractController
                         break;
                     case 'Line':
                         $node = new LineChart();
+                        break;
+                    case 'Pie':
+                        $node = new PieChart();
                         break;
                     case 'Group':
                         $node = new ChartGroup();

@@ -13,6 +13,13 @@ Lines are "region"
 Order X descending
 End
 
+Create Pie
+Title is "exPieChart"
+Category is "year"
+Value is "AveragePrice"
+Order Category descending
+End
+
 Create Group
 Title is "exGroup"
 Orient horizontal
