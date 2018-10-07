@@ -5,6 +5,13 @@ Y is "Gross"
 Order X descending
 End
 
+Create Bar
+Title is "exBarChart1"
+X is "MPAA"
+Y is "Tickets"
+Order X descending
+End
+
 Create Line
 Title is "exLineChart"
 X is "Time"
@@ -12,9 +19,31 @@ Y is "percentile"
 Order Y ascending
 End
 
+Create Bar
+Title is "exBarChart2"
+X is "MPAA"
+Y is "Gross"
+Order X descending
+End
+
+Create Bar
+Title is "exBarChart3"
+X is "Genre"
+Y is "Tickets"
+Order X descending
+End
+
 Create Group
 Title is "exGroup"
 Orient horizontal
 Add "exBarChart"
+Add "exBarChart1"
 Add "exLineChart"
+End
+
+Create Group
+Title is "exGroup1"
+Orient vertical
+Add "exBarChart3"
+Add "exBarChart2"
 End

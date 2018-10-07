@@ -4,23 +4,31 @@
         <meta charset="UTF-8">
         <title>{% block title %}DashboardCreator{% endblock %}</title>
         {% block stylesheets %}
-            {# .css references go here, if required #}
+            <link rel="stylesheet" type="text/css" href="css/main.css">
         {% endblock %}
     </head>
-    <body>
+        <body>
         {% block body %}
 
             {# track charts that are already in groups, so they can be excluded below #}
             {% set grouped_charts = [] %}
             {% for group in groups %}
-                <div id='{{ group.getTitle() }}'>
-                    {# todo: add the 'canvas' tags for the charts in this group. Add their titles to grouped_charts #}
+                <h1 class="groupHeading">{{ group.getTitle() }}</h1>
+                <div id='{{ group.getTitle() }}' class='{{ group.getOrientation() }}'>
+                    {%  for chart_title in group.getChartTitles() %}
+                        {%  set grouped_charts = grouped_charts|merge([chart_title]) %}
+                        <div class='chartContainer'>
+                            <canvas id='{{ chart_title }}'></canvas>
+                        </div>
+                    {% endfor %}
                 </div>
             {% endfor %}
 
             {% for chart in charts  %}
                 {% if chart.getTitle() not in grouped_charts %}
-                    <canvas id='{{ chart.getTitle() }}' width='100px' height='100px'></canvas>
+                <div class="chartContainer">
+                    <canvas id='{{ chart.getTitle() }}'></canvas>
+                </div>
                 {% endif %}
             {% endfor %}
 
@@ -37,5 +45,6 @@
                 {% endif %}
             {% endfor %}
         {% endblock %}
-    </body>
+        </body>
+    </div>
 </html>

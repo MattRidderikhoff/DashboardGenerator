@@ -1,0 +1,24 @@
+.chartContainer {
+    height: 300px;
+    width: 600px;
+}
+
+.groupHeading {
+    font-family: "Avenir Next", "Avenir", "Arial";
+    font-weight: 600;
+    margin-left: 16px;
+}
+
+.horizontal {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.vertical {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+
