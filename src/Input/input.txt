@@ -1,8 +1,9 @@
 Create Bar
-Title is "exBarChart"
+Title is "International Revenue where there was low Domestic Revenue"
 X is "Genre"
 Y is "Gross"
 Order X descending
+Only use rows where "Gross" < 10000000
 End
 
 Create Line
@@ -10,6 +11,7 @@ Title is "exLineChart"
 X is "Genre"
 Y is "Gross"
 Order Y ascending
+Only use rows where "Genre" IN ("Comedy","Adventure")
 End
 
 Create Pie

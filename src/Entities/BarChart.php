@@ -24,7 +24,7 @@ class BarChart extends Chart
     {
         $data = [];
         foreach ($dataset as $row) {
-
+            
             $x_value = trim($row[$this->x_axis]);
             if (!isset($data[$x_value])) {
                 $data[$x_value]['x_value'] = $x_value;
@@ -61,6 +61,9 @@ class BarChart extends Chart
                 break;
             case self::X_ORDER_TOKEN:
                 $this->order = $token_manager->getNextToken();
+                break;
+            case self::ONLY_USE_TOKEN:
+                $this->separateFilter($token_manager);
                 break;
             default:
                 // discard value for unsupported attribute
