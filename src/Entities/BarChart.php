@@ -24,14 +24,16 @@ class BarChart extends Chart
     {
         $data = [];
         foreach ($dataset as $row) {
-            
-            $x_value = trim($row[$this->x_axis]);
-            if (!isset($data[$x_value])) {
-                $data[$x_value]['x_value'] = $x_value;
-                $data[$x_value]['y_value'] = 0;
-            }
+            if ($this->passesFilter($row)) {
 
-            $data[$x_value]['y_value'] += intval($row[$this->y_axis]);
+                $x_value = trim($row[$this->x_axis]);
+                if (!isset($data[$x_value])) {
+                    $data[$x_value]['x_value'] = $x_value;
+                    $data[$x_value]['y_value'] = 0;
+                }
+
+                $data[$x_value]['y_value'] += intval($row[$this->y_axis]);
+            }
         }
 
         $this->data['colours'] = [];
