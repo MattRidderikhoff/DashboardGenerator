@@ -13,6 +13,7 @@ abstract class Chart extends Node
 {
     const X_AXIS_TOKEN = 'X is';
     const Y_AXIS_TOKEN = 'Y is';
+    const LINE_TOKEN = 'Lines are';
     const X_ORDER_TOKEN = 'Order X';
     const Y_ORDER_TOKEN = 'Order Y';
 
@@ -41,12 +42,27 @@ abstract class Chart extends Node
     protected function sortByX() {
         ksort($this->data['x_values']);
         ksort($this->data['y_values']);
-        ksort($this->data['colours']);
+        if(isset($this->data['colours'])) {
+            ksort($this->data['colours']);
+        }
 
         if ($this->order === Chart::DESCENDING_KEY) {
             $this->data['x_values'] = array_reverse($this->data['x_values']);
             $this->data['y_values'] = array_reverse($this->data['y_values']);
-            $this->data['colours'] = array_reverse($this->data['colours']);
+            if(isset($this->data['colours'])) {
+                $this->data['colours'] = array_reverse($this->data['colours']);
+            }
         }
     }
+
+    protected function sortByY() {
+        if ($this->order === Chart::DESCENDING_KEY) {
+            array_multisort($this->data['y_values'], SORT_DESC ,$this->data['x_values']);
+        } else {
+            array_multisort($this->data['y_values'], $this->data['x_values']);
+        }
+
+    }
+
+
 }

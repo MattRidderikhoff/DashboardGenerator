@@ -1,0 +1,29 @@
+{% set data = chart.getData() %}
+
+<script>
+    var ctx = document.getElementById('{{ chart.getTitle() }}');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [{% for x_value in data.x_values %}"{{ x_value }}",{% endfor %}],
+            datasets: [
+                {% for line in data.lines %}
+                    {
+                        label: "{{ line }}",
+                        data: [{% for y_value in data.y_values[line] %}{{ y_value }},{% endfor %}],
+                        fill:false,
+                        pointBackgroundColor: "{{ data.colours[line] }}",
+                        borderColor:"{{ data.colours[line] }}",
+                        backgroundColor:"{{ data.colours[line] }}"
+                    },
+                {% endfor %}
+            ]
+        },
+        options: {
+            title: {
+                display: true,
+                text: '{{ chart.getTitle() }}'
+            }
+        }
+    });
+</script>
