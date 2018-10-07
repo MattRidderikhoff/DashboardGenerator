@@ -7,8 +7,8 @@ End
 
 Create Line
 Title is "exLineChart"
-X is "Time"
-Y is "percentile"
+X is "Genre"
+Y is "Gross"
 Order Y ascending
 End
 

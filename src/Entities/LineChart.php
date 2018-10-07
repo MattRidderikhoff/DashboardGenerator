@@ -22,7 +22,30 @@ class LineChart extends Chart
 
     public function evaluate($dataset)
     {
-        // TODO: Implement evaluate() method.
+        $data = [];
+        foreach ($dataset as $row) {
+            $x_value = trim($row[$this->x_axis]);
+
+            if (!isset($data[$x_value])) {
+                $data[$x_value]['x_value'] = $x_value;
+                $data[$x_value]['y_value'] = 0;
+            }
+            $data[$x_value]['y_value'] += intval($row[$this->y_axis]);
+        }
+
+        foreach ($data as $column) {
+            $x_value = $column['x_value'];
+            $this->data['x_values'][$x_value] = $x_value;
+            $this->data['y_values'][$x_value] = $column['y_value'];
+        }
+
+        if (isset($this->x_order)) {
+            $this->order = $this->x_order;
+            $this->sortByX();
+        } else if (isset($this->y_order)) {
+            $this->order = $this->y_order;
+            $this->sortByY();
+        }
     }
 
     public function addAttribute(TokenManager $token_manager, $token)
@@ -48,5 +71,13 @@ class LineChart extends Chart
                 $token_manager->getNextToken();
                 break;
         }
+    }
+
+    public function getData() {
+        return $this->data;
+    }
+
+    protected function sort() {
+
     }
 }
