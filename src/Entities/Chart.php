@@ -87,7 +87,10 @@ abstract class Chart extends Node
             $filter_string = str_replace('(', '', $filter_string);
             $filter_string = str_replace(')', '', $filter_string);
 
-            $this->filter_value = explode(',', $filter_string);
+            $filter_values = explode(',', $filter_string);
+            foreach ($filter_values as $filter_value) {
+                $this->filter_value[] = trim($filter_value);
+            }
         } else {
             $this->filter_value = $token_manager->getNextToken();
         }

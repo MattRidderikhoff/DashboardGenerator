@@ -12,7 +12,7 @@ X is "year"
 Y is "Total Volume"
 Lines are "region"
 Order X descending
-Only user rows where "region" include ("Albany", "Atlanta", "BaltimoreWashington")
+Only use rows where "region" include ("Albany", "Atlanta", "BaltimoreWashington")
 End
 
 Create Pie
