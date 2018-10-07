@@ -32,7 +32,7 @@ class BaseController extends AbstractController
         $input_path = str_replace('Controller', '', __DIR__ ) . "Input/";
 
         /** 1. Parse dataset into a structure we can use **/
-        $dataset_path = $input_path . 'movies_2011.csv';
+        $dataset_path = $input_path . 'avocado.csv';
         $dataset = $serializer->decode(file_get_contents($dataset_path), 'csv');
 
         /** 2. Tokenize Input.txt and generate an AST **/

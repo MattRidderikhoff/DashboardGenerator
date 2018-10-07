@@ -1,23 +1,24 @@
-Create Line
-Title is "exLineChart"
-X is "Genre"
-Y is "Gross"
-Order Y ascending
-Only use rows where "Genre" exclude ("Comedy","Adventure")
+Create Bar
+Title is "exBarChart"
+X is "region"
+Y is "AveragePrice"
+Only use rows where "year" >= 2017
+Order X descending
 End
 
-Create Bar
-Title is "International Revenue where there was low Domestic Revenue"
-X is "Genre"
-Y is "Gross"
+Create Line
+Title is "Total Volume vs Year"
+X is "year"
+Y is "Total Volume"
+Lines are "region"
 Order X descending
-Only use rows where "Gross" < 10000000
+Only user rows where "region" include ("Albany", "Atlanta", "BaltimoreWashington")
 End
 
 Create Pie
 Title is "exPieChart"
-Category is "Genre"
-Value is "Gross"
+Category is "year"
+Value is "AveragePrice"
 Order Category descending
 End
 
