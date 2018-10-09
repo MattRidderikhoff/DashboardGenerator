@@ -59,7 +59,7 @@ class BaseController extends AbstractController
         /** 3. Evaluate each node with the provided dataset **/
         foreach ($nodes as $node) {
             if ($node instanceof ChartGroup) {
-                $node->evaluate('');
+                $node->evaluate(null);
             } else {
                 $dataset = $this->datasets[$node->getDatasetId()];
                 $node->evaluate($dataset);
