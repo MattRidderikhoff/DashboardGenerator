@@ -13,7 +13,6 @@ abstract class Chart extends Node
 {
     const X_AXIS_TOKEN = 'X is';
     const Y_AXIS_TOKEN = 'Y is';
-    const LINE_TOKEN = 'Lines are';
     const X_ORDER_TOKEN = 'Order X';
     const Y_ORDER_TOKEN = 'Order Y';
     const ONLY_USE_TOKEN = 'Only use rows where';
@@ -23,6 +22,7 @@ abstract class Chart extends Node
     const GREATER_THAN_KEY = '>';
     const LESS_THAN_OR_EQUAL_KEY = '>=';
     const GREATER_THAN_OR_EQUAL_KEY = '<=';
+    const EQUAL_KEY = '=';
     const INCLUDE_KEY = 'include';
     const EXCLUDE_KEY = 'exclude';
 
@@ -120,6 +120,8 @@ abstract class Chart extends Node
                     return (intval(trim($row[$this->filter_column])) > $this->filter_value);
                 case self::GREATER_THAN_OR_EQUAL_KEY:
                     return (intval(trim($row[$this->filter_column])) >= $this->filter_value);
+                case self::EQUAL_KEY:
+                    return (intval(trim($row[$this->filter_column])) == $this->filter_value);
                 case null:
                     return true;
                 default:

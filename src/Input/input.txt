@@ -2,7 +2,7 @@ Create Bar
 Title is "exBarChart"
 X is "region"
 Y is "AveragePrice"
-Only use rows where "year" >= 2017
+Only use rows where "year" <= 2017
 Order X descending
 End
 
@@ -20,6 +20,7 @@ Title is "exPieChart"
 Category is "year"
 Value is "AveragePrice"
 Order Category descending
+Only use rows where "year" > 2015
 End
 
 Create Group
