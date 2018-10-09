@@ -20,6 +20,9 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class BaseController extends AbstractController
 {
+    private $datasets = [];
+    private $dataset_names = [];
+
     /**
      * @param SerializerInterface $serializer
      * @param Tokenizer $tokenizer
@@ -32,8 +35,15 @@ class BaseController extends AbstractController
         $input_path = str_replace('Controller', '', __DIR__ ) . "Input/";
 
         /** 1. Parse dataset into a structure we can use **/
-        $dataset_path = $input_path . 'avocado.csv';
-        $dataset = $serializer->decode(file_get_contents($dataset_path), 'csv');
+        // todo: These should be read from a directory
+        $dataset_names = ['avocado.csv', 'movies_2011.csv'];
+
+        foreach ($dataset_names as $dataset_name) {
+            $dataset_path = $input_path . $dataset_name;
+
+            $dataset_id = str_replace('.csv', '', $dataset_name);
+            $this->datasets[$dataset_id] = $serializer->decode(file_get_contents($dataset_path), 'csv');
+        }
 
         /** 2. Tokenize Input.txt and generate an AST **/
         // 2a. generate tokens
@@ -48,7 +58,12 @@ class BaseController extends AbstractController
 
         /** 3. Evaluate each node with the provided dataset **/
         foreach ($nodes as $node) {
-            $node->evaluate($dataset);
+            if ($node instanceof ChartGroup) {
+                $node->evaluate('');
+            } else {
+                $dataset = $this->datasets[$node->getDatasetId()];
+                $node->evaluate($dataset);
+            }
         }
 
         /** 4. Arrange Charts in ChartGroups, if applicable **/

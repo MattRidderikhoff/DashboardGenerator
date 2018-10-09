@@ -1,4 +1,5 @@
 Create Bar
+Dataset is "avocado"
 Title is "exBarChart"
 X is "region"
 Y is "AveragePrice"
@@ -7,6 +8,7 @@ Order X descending
 End
 
 Create Line
+Dataset is "avocado"
 Title is "Total Volume vs Year"
 X is "year"
 Y is "Total Volume"
@@ -16,11 +18,12 @@ Only use rows where "region" include ("Albany", "Atlanta", "BaltimoreWashington"
 End
 
 Create Pie
+Dataset is "movies_2011"
 Title is "exPieChart"
-Category is "year"
-Value is "AveragePrice"
+Category is "Genre"
+Value is "Gross"
 Order Category descending
-Only use rows where "year" > 2015
+Only use rows where "Genre" exclude ("?")
 End
 
 Create Group

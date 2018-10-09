@@ -55,6 +55,9 @@ class PieChart extends Chart
     public function addAttribute(TokenManager $token_manager, $token)
     {
         switch ($token) {
+            case self::DATASET_TOKEN:
+                $this->dataset_id = $token_manager->getNextToken();
+                break;
             case self::CATEGORY_TOKEN:
                 $this->x_axis = $token_manager->getNextToken();
                 break;
