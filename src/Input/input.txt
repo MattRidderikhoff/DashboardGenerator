@@ -1,3 +1,8 @@
+Create Datasets
+Add "avocado"
+Add "movies_2011"
+End
+
 Create Bar
 Dataset is "avocado"
 Title is "exBarChart"

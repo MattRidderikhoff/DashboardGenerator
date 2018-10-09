@@ -10,6 +10,7 @@ namespace App\Controller;
 
 use App\Entities\BarChart;
 use App\Entities\ChartGroup;
+use App\Entities\Datasets;
 use App\Entities\LineChart;
 use App\Entities\Node;
 use App\Entities\PieChart;
@@ -21,7 +22,6 @@ use Symfony\Component\Serializer\SerializerInterface;
 class BaseController extends AbstractController
 {
     private $datasets = [];
-    private $dataset_names = [];
 
     /**
      * @param SerializerInterface $serializer
@@ -38,12 +38,12 @@ class BaseController extends AbstractController
         // todo: These should be read from a directory
         $dataset_names = ['avocado.csv', 'movies_2011.csv'];
 
-        foreach ($dataset_names as $dataset_name) {
-            $dataset_path = $input_path . $dataset_name;
-
-            $dataset_id = str_replace('.csv', '', $dataset_name);
-            $this->datasets[$dataset_id] = $serializer->decode(file_get_contents($dataset_path), 'csv');
-        }
+//        foreach ($dataset_names as $dataset_name) {
+//            $dataset_path = $input_path . $dataset_name;
+//
+//            $dataset_id = str_replace('.csv', '', $dataset_name);
+//            $this->datasets[$dataset_id] = $serializer->decode(file_get_contents($dataset_path), 'csv');
+//        }
 
         /** 2. Tokenize Input.txt and generate an AST **/
         // 2a. generate tokens
@@ -54,9 +54,14 @@ class BaseController extends AbstractController
         $token_manager = new TokenManager($tokens);
 
         // 2b. generate nodes of the AST
-        $nodes = $this->generateNodes($token_manager);
+        $nodes = $this->generateNodes($token_manager, $serializer);
 
         /** 3. Evaluate each node with the provided dataset **/
+        // 3a. evaluate datasets
+        $datasets_entity = array_shift($nodes);
+        $this->datasets = $datasets_entity->evaluate(null);
+
+        // 3b. evaluate everything else
         foreach ($nodes as $node) {
             if ($node instanceof ChartGroup) {
                 $node->evaluate('');
@@ -77,15 +82,18 @@ class BaseController extends AbstractController
              'groups' => $charts_and_groups['groups']]);
     }
 
-    private function generateNodes(TokenManager $token_manager) {
+    private function generateNodes(TokenManager $token_manager, $serializer) {
         $nodes = [];
         while ($token_manager->hasNextToken()) {
 
+            $node = null;
             if ($token_manager->getAndCheckNextToken(Node::NODE_START_TOKEN)) {
 
-                $node = null;
                 $next_token = $token_manager->getNextToken();
                 switch ($next_token) {
+                    case 'Datasets':
+                        $node = new Datasets($serializer);
+                        break;
                     case 'Bar':
                         $node = new BarChart();
                         break;
@@ -102,6 +110,7 @@ class BaseController extends AbstractController
 
                 $nodes[] = $node;
                 $node->parse($token_manager);
+
             } else {
                 throw new \Exception("Incorrectly formatted DSL (didn't start chart/group with 'Create')");
             }
