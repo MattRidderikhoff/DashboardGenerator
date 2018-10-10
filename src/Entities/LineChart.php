@@ -10,6 +10,8 @@ namespace App\Entities;
 
 class LineChart extends Chart
 {
+    const LINE_TOKEN = 'Lines are';
+
     private $x_axis;
     private $y_axis;
     private $line;
@@ -25,19 +27,21 @@ class LineChart extends Chart
     {
         $data = [];
         foreach ($dataset as $row) {
-            $line_value = trim($row[$this->line]);
-            $x_value = trim($row[$this->x_axis]);
+            if ($this->passesFilter($row)) {
+                $line_value = trim($row[$this->line]);
+                $x_value = trim($row[$this->x_axis]);
 
-            if (!isset($data[$line_value])) {
-                $data[$line_value]['line_value'] = $line_value;
+                if (!isset($data[$line_value])) {
+                    $data[$line_value]['line_value'] = $line_value;
+                }
+
+                if (!isset($data[$line_value][$x_value])) {
+                    $data[$line_value]['x_values'][$x_value]['x_value'] = $x_value;
+                    $data[$line_value]['x_values'][$x_value]['y_value'] = 0;
+                }
+
+                $data[$line_value]['x_values'][$x_value]['y_value'] += doubleval($row[$this->y_axis]);
             }
-
-            if (!isset($data[$line_value][$x_value])) {
-                $data[$line_value]['x_values'][$x_value]['x_value'] = $x_value;
-                $data[$line_value]['x_values'][$x_value]['y_value'] = 0;
-            }
-
-            $data[$line_value]['x_values'][$x_value]['y_value'] += doubleval($row[$this->y_axis]);
         }
 
         $this->data['colours'] = [];
@@ -80,6 +84,9 @@ class LineChart extends Chart
                 break;
             case self::Y_ORDER_TOKEN:
                 $this->y_order = $token_manager->getNextToken();
+                break;
+            case self::ONLY_USE_TOKEN:
+                $this->separateFilter($token_manager);
                 break;
             default:
                 // discard value for unsupported attribute
