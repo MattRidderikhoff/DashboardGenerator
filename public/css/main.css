@@ -4,6 +4,7 @@
 }
 
 .groupHeading {
+    text-align: center;
     font-family: "Avenir Next", "Avenir", "Arial";
     font-weight: 600;
     margin-left: 16px;
@@ -19,6 +20,9 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    align-items: center;
 }
 
 
