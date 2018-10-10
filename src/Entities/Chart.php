@@ -11,6 +11,7 @@ namespace App\Entities;
 
 abstract class Chart extends Node
 {
+    const DATASET_TOKEN = 'Dataset is';
     const X_AXIS_TOKEN = 'X is';
     const Y_AXIS_TOKEN = 'Y is';
     const X_ORDER_TOKEN = 'Order X';
@@ -26,11 +27,17 @@ abstract class Chart extends Node
     const INCLUDE_KEY = 'include';
     const EXCLUDE_KEY = 'exclude';
 
+    protected $data = [];
+    protected $dataset_id;
+
+    protected $order;
     protected $filter_column;
     protected $filter_value;
     protected $filter_type;
-    protected $order;
-    protected $data = [];
+
+    public function getDatasetId() {
+        return $this->dataset_id;
+    }
 
     public function getData() {
         return $this->data;

@@ -13,7 +13,7 @@ class Tokenizer
     // todo: move LINE_TOKEN into LineChart
 
     // literals that can begin a line
-    const STATEMENT_START_LITERALS = [Node::NODE_START_TOKEN, Node::TITLE_TOKEN, Node::NODE_END_TOKEN, Chart::X_AXIS_TOKEN,
+    const STATEMENT_START_LITERALS = [Node::NODE_START_TOKEN, Node::TITLE_TOKEN, Chart::DATASET_TOKEN, Node::NODE_END_TOKEN, Chart::X_AXIS_TOKEN,
         Chart::Y_AXIS_TOKEN, Chart::Y_ORDER_TOKEN, Chart::X_ORDER_TOKEN, PieChart::CATEGORY_TOKEN, PieChart::VALUE_TOKEN,
         PieChart::CATEGORY_ORDER_TOKEN, LineChart::LINE_TOKEN, ChartGroup::ORIENT_TOKEN, ChartGroup::ADD_CHART_TOKEN, Chart::ONLY_USE_TOKEN];
 
