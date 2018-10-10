@@ -12,7 +12,6 @@ namespace App\Entities;
 class ChartGroup extends Node
 {
     const ORIENT_TOKEN = 'Orient';
-    const ADD_CHART_TOKEN = 'Add';
 
     private $chart_titles = [];
     private $orientation;
@@ -30,7 +29,7 @@ class ChartGroup extends Node
     public function addAttribute(TokenManager $token_manager, $token)
     {
         switch ($token) {
-            case self::ADD_CHART_TOKEN:
+            case self::ADD_ITEM_TOKEN:
                 $this->chart_titles[] = $token_manager->getNextToken();
                 break;
             case self::TITLE_TOKEN:

@@ -10,6 +10,7 @@ namespace App\Entities;
 
 abstract class Node
 {
+    const TYPE_DATASET = 'datasets';
     const TYPE_CHART_GROUP = 'group';
     const TYPE_BAR_CHART = 'bar_chart';
     const TYPE_LINE_CHART = 'line_chart';
@@ -18,6 +19,7 @@ abstract class Node
     const NODE_START_TOKEN = 'Create';
     const NODE_END_TOKEN = 'End';
     const TITLE_TOKEN = 'Title is';
+    const ADD_ITEM_TOKEN = 'Add';
 
     protected $title;
     protected $type;
