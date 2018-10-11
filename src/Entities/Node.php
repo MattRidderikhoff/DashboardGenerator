@@ -25,6 +25,8 @@ abstract class Node
     protected $type;
     protected $y_axis;
     protected $x_axis;
+    protected $x_label;
+    protected $y_label;
 
     public function parse($token_manager) {
         while (!$token_manager->checkNextToken('End')) {
@@ -46,22 +48,15 @@ abstract class Node
     public function getType() {
         return $this->type;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getYAxis()
+    
+    public function getXLabel()
     {
-        return $this->y_axis;
+        return $this->x_label;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getXAxis()
+    public function getYLabel()
     {
-        return $this->x_axis;
+        return $this->y_label;
     }
-
 
 }

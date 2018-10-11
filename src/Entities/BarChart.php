@@ -55,9 +55,19 @@ class BarChart extends Chart
                 break;
             case self::X_AXIS_TOKEN:
                 $this->x_axis = $token_manager->getNextToken();
+                $this->x_label = $this->x_axis;
+                if ($token_manager->checkNextToken(self::ALIAS_TOKEN)) {
+                    $token_manager->getNextToken();
+                    $this->x_label = $token_manager->getNextToken();
+                }
                 break;
             case self::Y_AXIS_TOKEN:
                 $this->y_axis = $token_manager->getNextToken();
+                $this->y_label = $this->y_axis;
+                if ($token_manager->checkNextToken(self::ALIAS_TOKEN)) {
+                    $token_manager->getNextToken();
+                    $this->y_label = $token_manager->getNextToken();
+                }
                 break;
             case self::TITLE_TOKEN:
                 $this->title = $token_manager->getNextToken();
