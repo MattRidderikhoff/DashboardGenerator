@@ -24,9 +24,6 @@ class Tokenizer
     // literals that can be combined to make
     const BASE_LOGIC_LITERALS = [Chart::GREATER_THAN_KEY,  Chart::LESS_THAN_KEY, Chart::EQUAL_KEY];
 
-    // literals within a line but is not start of line
-    const SUB_LITERALS = [Chart::ALIAS_TOKEN];
-
     public function generateTokens($input_lines) {
         $input_lines = explode("\n", $input_lines);
 
