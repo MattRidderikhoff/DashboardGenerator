@@ -11,8 +11,6 @@ namespace App\Entities;
 
 class BarChart extends Chart
 {
-    private $x_axis;
-    private $y_axis;
 
     public function __construct()
     {

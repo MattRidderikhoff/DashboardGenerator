@@ -14,9 +14,9 @@ class PieChart extends Chart
     const CATEGORY_TOKEN = "Category is";
     const VALUE_TOKEN = "Value is";
     const CATEGORY_ORDER_TOKEN = "Order Category";
-
-    private $x_axis; // Category
-    private $y_axis; // Value
+//
+//    private $x_axis; // Category
+//    private $y_axis; // Value
 
     public function __construct()
     {

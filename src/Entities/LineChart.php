@@ -12,8 +12,6 @@ class LineChart extends Chart
 {
     const LINE_TOKEN = 'Lines are';
 
-    private $x_axis;
-    private $y_axis;
     private $line;
     private $x_order;
     private $y_order;

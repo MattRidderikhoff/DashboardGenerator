@@ -23,6 +23,8 @@ abstract class Node
 
     protected $title;
     protected $type;
+    protected $y_axis;
+    protected $x_axis;
 
     public function parse($token_manager) {
         while (!$token_manager->checkNextToken('End')) {
@@ -44,4 +46,22 @@ abstract class Node
     public function getType() {
         return $this->type;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getYAxis()
+    {
+        return $this->y_axis;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getXAxis()
+    {
+        return $this->x_axis;
+    }
+
+
 }
