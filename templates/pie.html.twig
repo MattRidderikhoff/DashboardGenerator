@@ -2,13 +2,12 @@
 
 <script>
     new Chart(document.getElementById('{{ chart.getTitle() }}'), {
-        type: 'bar',
+        type: 'pie',
         data: {
             labels: [{% for x_value in data.x_values %}"{{ x_value }}",{% endfor %}],
             datasets: [{
-                label: "{{ chart.getTitle() }}",
-                data: [{% for y_value in data.y_values %}{{ y_value }},{% endfor %}],
-                backgroundColor: [{% for colour in data.colours %}"{{ colour }}",{% endfor %}]
+                backgroundColor: [{% for colour in data.colours %}"{{ colour }}",{% endfor %}],
+                data: [{% for y_value in data.y_values %}{{ y_value }},{% endfor %}]
             }]
         },
         options: {
