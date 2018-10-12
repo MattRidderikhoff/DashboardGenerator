@@ -3,8 +3,8 @@
 #    controller: App\Controller\DefaultController::index
 app_render:
   path: /render
-  controller: App\Controller\BaseController::renderHomepage
+  controller: App\Controller\BaseController::renderCharts
 
 app_home:
   path: /
-  controller: App\Controller\BaseController::renderNewHomepage
+  controller: App\Controller\BaseController::renderHome

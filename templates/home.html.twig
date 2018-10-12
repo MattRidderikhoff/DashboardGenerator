@@ -10,14 +10,20 @@
 <body>
 {% block body %}
 
+    <div class="render">
+        <form action="/render">
+            <button>View my charts</button>
+        </form>
+    </div>
+
     <div class="home-all">
         <div class="home-left">
-            <h2>Current Datasets</h2>
-
             <div>
-                <form id="datasets-remove" action="/">
+                <h2>Current Datasets</h2>
+
+                <form action="/">
                     <div class="datasets-list">
-                        <select multiple id="datasets-remove-form" name="remove_datasets[]">
+                        <select multiple id="datasets-select-list" name="remove_datasets[]">
                             {% for dataset in datasets %}
                                 <option value="{{ dataset }}">{{ dataset }}</option>
                             {% endfor %}
@@ -41,15 +47,17 @@
             <div class="dsl">
                 <h2>Current program</h2>
 
+                <div id="program_display">
+                    {% for program_line in program %}
+                        <span>{{ program_line }}</span><br>
+                    {% endfor %}
+                </div>
+
                 <form id="change-program" action="/" method="post" enctype="multipart/form-data">
                     Select .txt:
                     <input type="file" name="new_program">
                     <input type="submit" accept=".txt" name="change_program_button" value="Upload DSL file">
                 </form>
-            </div>
-
-            <div class="render">
-                <button>Show charts</button>
             </div>
         </div>
     </div>
