@@ -8,8 +8,8 @@ Dataset is "avocado"
 Title is "exBarChart"
 X is "region"
 Y is "AveragePrice"
-Only use rows where "year" <= 2017
 Order X descending
+Only use rows where "year" <= 2017
 End
 
 Create Line
