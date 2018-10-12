@@ -153,19 +153,19 @@ ProgramType ::=
 	BarProgram | DataProgram | GroupProgram | LineProgram | PieProgram
 
 BarProgram ::=
-	"Bar" GeneralHeaderStm BarStm Filter?
+	"Bar" GeneralHeaderStm BarStm GeneralTrailingStm
 
 DataProgram ::=
 	"Datasets" AddGraph
 
 GroupProgram ::=
-	"Group" GeneralHeaderStm GroupStm Filter?
+	"Group" GeneralHeaderStm GroupStm
 
 LineProgram ::=
-	"Line" GeneralHeaderStm LineStm Filter?
+	"Line" GeneralHeaderStm LineStm GeneralTrailingStm
 
 PieProgram ::=
-	"Pie" GeneralHeaderStm PieStm Filter?
+	"Pie" GeneralHeaderStm PieStm GeneralTrailingStm
 
 ### Abstract Grammar
 
@@ -186,6 +186,9 @@ PieStm ::=
 	
 GeneralHeaderStm ::=
 	Title Dataset | Dataset Title
+	
+GeneralTrailingStm ::= 
+	Filter? Scale? | Scale? Filter?
 
 ### High Level Grammar
 
@@ -225,6 +228,9 @@ Category ::=
 
 FilterData ::=
 	("include" | "exclude" | ">" | ">=" | "<=" | "<") (NUM+ | "(" RAWSTRING ")")
+	
+Scale ::=
+	"Scale by" NUM+
 
 Value ::=
 	"Value" Define
@@ -257,7 +263,7 @@ STRING ::=
 	"a"|"b"|"c"|"d"|"e"|"f"|"g"|"h"|"i"|"j"|"k"|"l"|"m"|"n"|"o"|"p"|"q"|"r"|"s"|"t"|"u"|"v"|"w"|"x"|"y"|"z"
 
 NUM ::=
-	0|1|2|3|4|5|6|7|8|9
+	0|1|2|3|4|5|6|7|8|9|"."
 	
 RAWSTRING ::=
 	\".+\"
