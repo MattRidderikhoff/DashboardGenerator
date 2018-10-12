@@ -19,6 +19,7 @@ use App\Services\Tokenizer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Serializer\SerializerInterface;
 
@@ -27,9 +28,19 @@ class BaseController extends AbstractController
     private $datasets = [];
 
     public function renderNewHomepage(Request $request) {
-        $to_remove_datasets = $request->query->get('to_remove');
-        if (isset($to_remove_datasets)) {
-            $this->removeDatasets($to_remove_datasets);
+        $remove_datasets = $request->query->get('remove_datasets');
+        if (isset($remove_datasets)) {
+            $this->removeDatasets($remove_datasets);
+        }
+
+        $add_dataset = $request->files->get('add_dataset');
+        if (isset($add_dataset)) {
+            $this->addDataset($add_dataset);
+        }
+
+        $new_program = $request->files->get('new_program');
+        if (isset($new_program)) {
+            $this->changeProgram($new_program);
         }
 
         $finder = new Finder();
@@ -39,6 +50,7 @@ class BaseController extends AbstractController
         foreach ($finder as $file) {
             $filenames[] = $file->getRelativePathname();
         }
+        sort($filenames);
 
         return $this->render('home.html.twig',
             ['datasets' => $filenames]);
@@ -145,6 +157,18 @@ class BaseController extends AbstractController
             $dataset_path = $input_path . $dataset;
             $filesystem->remove($dataset_path);
         }
+    }
+
+    private function addDataset(UploadedFile $dataset) {
+        $dataset->move($this->getInputPath(), $dataset->getClientOriginalName());
+    }
+
+    private function changeProgram(UploadedFile $new_dsl) {
+        $input_path = $this->getInputPath();
+        $filesystem = new Filesystem();
+
+        $filesystem->remove($input_path . 'input.txt');
+        $new_dsl->move($this->getInputPath(), 'input.txt');
     }
 
     private function getInputPath() {

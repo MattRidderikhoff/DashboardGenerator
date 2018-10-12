@@ -1,18 +1,22 @@
-div {
+.home-all {
     display: inline-flex;
     width: 100%;
 }
 
 .home-left {
     width: 50%;
-    display: block;
+    display: inline-grid;
     margin: auto;
 
     text-align: center;
 }
 
-.home-left form {
-    display: inline-grid;
+.home-left h2 {
+    margin-bottom: 0;
+}
+
+#datasets-upload {
+    margin-top: 50px;
 }
 
 .home-right {

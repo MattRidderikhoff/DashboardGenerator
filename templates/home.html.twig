@@ -10,31 +10,46 @@
 <body>
 {% block body %}
 
-    <div>
+    <div class="home-all">
         <div class="home-left">
-            <h3>Current Datasets</h3>
+            <h2>Current Datasets</h2>
 
-            <form id="datasets-remove" action="/">
-                <div class="datasets-list">
-                    <select multiple id="datasets-remove-form" name="to_remove[]">
-                        {% for dataset in datasets %}
-                            <option value="{{ dataset }}">{{ dataset }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
+            <div>
+                <form id="datasets-remove" action="/">
+                    <div class="datasets-list">
+                        <select multiple id="datasets-remove-form" name="remove_datasets[]">
+                            {% for dataset in datasets %}
+                                <option value="{{ dataset }}">{{ dataset }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
 
-                <button type="button">Upload dataset</button>
-                <button>Remove dataset</button>
-            </form>
+                    <button>Remove dataset</button>
+                </form>
+
+
+                <form id="datasets-upload" action="/" method="post" enctype="multipart/form-data">
+                    Select .csv:
+                    <input type="file" name="add_dataset">
+                    <input type="submit" accept=".csv" name="add_dataset_button" value="Upload dataset">
+                </form>
+            </div>
+
         </div>
 
         <div class="home-right">
-            <div class="render">
-                <button>Show charts</button>
+            <div class="dsl">
+                <h2>Current program</h2>
+
+                <form id="change-program" action="/" method="post" enctype="multipart/form-data">
+                    Select .txt:
+                    <input type="file" name="new_program">
+                    <input type="submit" accept=".txt" name="change_program_button" value="Upload DSL file">
+                </form>
             </div>
 
-            <div class="dsl">
-                <button>Upload DSL .txt</button>
+            <div class="render">
+                <button>Show charts</button>
             </div>
         </div>
     </div>
