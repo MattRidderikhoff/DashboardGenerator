@@ -1,0 +1,26 @@
+div {
+    display: inline-flex;
+    width: 100%;
+}
+
+.home-left {
+    width: 50%;
+    display: block;
+    margin: auto;
+
+    text-align: center;
+}
+
+.home-left form {
+    display: inline-grid;
+}
+
+.home-right {
+    width: 50%;
+    display: block;
+}
+
+.datasets-list {
+    margin: auto;
+    padding: 10px;
+}

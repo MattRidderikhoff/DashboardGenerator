@@ -1,6 +1,10 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+app_render:
+  path: /render
+  controller: App\Controller\BaseController::renderHomepage
+
 app_home:
   path: /
-  controller: App\Controller\BaseController::renderHomepage
+  controller: App\Controller\BaseController::renderNewHomepage

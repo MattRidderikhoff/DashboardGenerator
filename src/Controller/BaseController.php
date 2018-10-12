@@ -17,11 +17,32 @@ use App\Entities\PieChart;
 use App\Entities\TokenManager;
 use App\Services\Tokenizer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Finder\Finder;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Serializer\SerializerInterface;
 
 class BaseController extends AbstractController
 {
     private $datasets = [];
+
+    public function renderNewHomepage(Request $request) {
+        $to_remove_datasets = $request->query->get('to_remove');
+        if (isset($to_remove_datasets)) {
+            $this->removeDatasets($to_remove_datasets);
+        }
+
+        $finder = new Finder();
+        $finder->files()->in($this->getInputPath())->name('*.csv');
+
+        $filenames = [];
+        foreach ($finder as $file) {
+            $filenames[] = $file->getRelativePathname();
+        }
+
+        return $this->render('home.html.twig',
+            ['datasets' => $filenames]);
+    }
 
     /**
      * @param SerializerInterface $serializer
@@ -32,11 +53,10 @@ class BaseController extends AbstractController
      * @throws \Exception
      */
     public function renderHomepage(SerializerInterface $serializer, Tokenizer $tokenizer) {
-        $input_path = str_replace('Controller', '', __DIR__ ) . "Input/";
 
         /** 1. Tokenize Input.txt and generate an AST **/
         // 1a. generate tokens
-        $dsl_input_path = $input_path . 'input.txt';
+        $dsl_input_path = $this->getInputPath() . 'input.txt';
         $dsl_input_string = file_get_contents($dsl_input_path);
 
         $tokens = $tokenizer->generateTokens($dsl_input_string);
@@ -115,5 +135,19 @@ class BaseController extends AbstractController
         }
 
         return $charts_and_groups;
+    }
+
+    private function removeDatasets($datasets) {
+        $filesystem = new Filesystem();
+
+        $input_path = $this->getInputPath();
+        foreach ($datasets as $dataset) {
+            $dataset_path = $input_path . $dataset;
+            $filesystem->remove($dataset_path);
+        }
+    }
+
+    private function getInputPath() {
+        return str_replace('Controller', '', __DIR__ ) . "Input/";
     }
 }

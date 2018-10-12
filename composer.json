@@ -7,6 +7,7 @@
         "ext-iconv": "*",
         "symfony/asset": "*",
         "symfony/console": "*",
+        "symfony/finder": "*",
         "symfony/flex": "^1.1",
         "symfony/framework-bundle": "*",
         "symfony/serializer": "*",
