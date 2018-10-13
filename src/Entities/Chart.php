@@ -26,6 +26,7 @@ abstract class Chart extends Node
     const EQUAL_KEY = '=';
     const INCLUDE_KEY = 'include';
     const EXCLUDE_KEY = 'exclude';
+    const SCALE_KEY = 'Scale by';
 
     protected $data = [];
     protected $dataset_id;
@@ -34,12 +35,14 @@ abstract class Chart extends Node
     protected $filter_column;
     protected $filter_value;
     protected $filter_type;
+    protected $scale_by;
 
     public function getDatasetId() {
         return $this->dataset_id;
     }
 
     public function getData() {
+        if (isset($this->scale_by)) {$this->scaleY();}
         return $this->data;
     }
 
@@ -83,6 +86,11 @@ abstract class Chart extends Node
             array_multisort($this->data['y_values'], $this->data['x_values']);
         }
 
+    }
+
+    protected function scaleY() {
+        $new_y_data = array_map(function ($n) { return ($n * $this->scale_by);}, $this->data['y_values']);
+        $this->data['y_values'] = $new_y_data;
     }
 
     protected function separateFilter(TokenManager $token_manager) {
