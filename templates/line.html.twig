@@ -23,6 +23,13 @@
             title: {
                 display: true,
                 text: '{{ chart.getTitle() }}'
+            },
+            scales: {
+                xAxes: [{
+                    ticks: {
+                        maxRotation: 0,
+                    }
+                }],
             }
         }
     });

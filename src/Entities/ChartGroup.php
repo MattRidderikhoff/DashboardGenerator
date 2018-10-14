@@ -48,4 +48,8 @@ class ChartGroup extends Node
     public function getChartTitles() {
         return $this->chart_titles;
     }
+
+    public function getOrientation() {
+        return $this->orientation;
+    }
 }
