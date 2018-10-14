@@ -100,10 +100,8 @@ abstract class Chart extends Node
 
         if ($this->filter_type === Chart::INCLUDE_KEY || $this->filter_type === Chart::EXCLUDE_KEY) {
             $filter_string = $token_manager->getNextToken();
-            $filter_string = str_replace('(', '', $filter_string);
-            $filter_string = str_replace(')', '', $filter_string);
 
-            $filter_values = explode(',', $filter_string);
+            $filter_values = explode(' and ', $filter_string);
             foreach ($filter_values as $filter_value) {
                 $this->filter_value[] = trim($filter_value);
             }

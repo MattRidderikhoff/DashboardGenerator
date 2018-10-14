@@ -26,9 +26,9 @@ Dataset is "avocado"
 Title is "Total Volume vs Year"
 X is "year" as "Year"
 Y is "Total Volume"
-Lines are "region"
+Lines are defined by "region"
 Order X descending
-Only use rows where "region" include ("Albany", "Atlanta", "BaltimoreWashington")
+Only use rows where "region" include "Albany" and "Atlanta" and "BaltimoreWashington"
 End
 
 Create Pie
