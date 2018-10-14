@@ -13,6 +13,7 @@ Order X descending
 End
 
 Create Bar
+Dataset is "movies_2011"
 Title is "exBarChart1"
 X is "MPAA"
 Y is "Tickets"
@@ -39,6 +40,7 @@ Only use rows where "Genre" exclude ("?")
 End
 
 Create Bar
+Dataset is "movies_2011"
 Title is "exBarChart2"
 X is "MPAA"
 Y is "Gross"
@@ -46,6 +48,7 @@ Order X descending
 End
 
 Create Bar
+Dataset is "movies_2011"
 Title is "exBarChart3"
 X is "Genre"
 Y is "Tickets"
@@ -57,7 +60,7 @@ Title is "exGroup"
 Orient horizontal
 Add "exBarChart"
 Add "exBarChart1"
-Add "exLineChart"
+Add "Total Volume vs Year"
 End
 
 Create Group
@@ -65,4 +68,5 @@ Title is "exGroup1"
 Orient vertical
 Add "exBarChart3"
 Add "exBarChart2"
+Add "exPieChart"
 End

@@ -18,7 +18,7 @@
                     {%  for chart_title in group.getChartTitles() %}
                         {%  set grouped_charts = grouped_charts|merge([chart_title]) %}
                         <div class='chartContainer'>
-                            <canvas id='{{ chart_title }}'></canvas>
+                            <canvas width="600" height="300" id='{{ chart_title }}'></canvas>
                         </div>
                     {% endfor %}
                 </div>
