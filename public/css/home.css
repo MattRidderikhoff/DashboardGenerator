@@ -1,0 +1,59 @@
+h2 {
+    margin-bottom: 0;
+    text-align: center;
+}
+
+form {
+    text-align: center;
+}
+
+.render {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 25px;
+}
+
+.home-all {
+    display: inline-flex;
+    width: 100%;
+}
+
+.home-left {
+    width: 50%;
+    display: inline-grid;
+
+    text-align: center;
+}
+
+#datasets-select-list {
+    height: 100px;
+    width: 150px;
+}
+
+#datasets-upload {
+    margin-top: 110px;
+}
+
+#change-program {
+    margin-top: 30px;
+}
+
+#program_display {
+    overflow: auto;
+
+    height: 200px;
+    width: 314px;
+    border: 1px solid #ccc;
+    margin-bottom: 25px;
+    margin-left: 160px;
+    margin-top: 10px;
+}
+
+.home-right {
+    width: 50%;
+    display: block;
+}
+
+.datasets-list {
+    margin-top: 10px;
+}

@@ -8,8 +8,9 @@ Dataset is "avocado"
 Title is "exBarChart"
 X is "region"
 Y is "AveragePrice"
-Only use rows where "year" <= 2017
 Order X descending
+Only use rows where "year" <= 2017
+Scale by 0.1
 End
 
 Create Bar
@@ -37,6 +38,7 @@ Category is "Genre"
 Value is "Gross"
 Order Category descending
 Only use rows where "Genre" exclude ("?")
+Scale by 0.00000001
 End
 
 Create Bar
