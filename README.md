@@ -150,19 +150,22 @@ Program ::=
 	"Create" ProgramType "End" Program*
 	
 ProgramType ::=
-	BarProgram | GroupProgram | LineProgram | PieProgram
+	BarProgram | DataProgram | GroupProgram | LineProgram | PieProgram
 
 BarProgram ::=
-	"Bar" (Title BarStm | BarStm Title)
+	"Bar" GeneralHeaderStm BarStm GeneralTrailingStm
+
+DataProgram ::=
+	"Datasets" AddGraph
 
 GroupProgram ::=
-	"Group" (Title GroupStm | GroupStm Title)
+	"Group" GeneralHeaderStm GroupStm
 
 LineProgram ::=
-	"Line" (Title LineStm | LineStm Title)
+	"Line" GeneralHeaderStm LineStm GeneralTrailingStm
 
 PieProgram ::=
-	"Pie" (Title PieStm | PieStm Title)
+	"Pie" GeneralHeaderStm PieStm GeneralTrailingStm
 
 ### Abstract Grammar
 
@@ -180,11 +183,20 @@ LineStm ::=
 
 PieStm ::=
 	DefineCVStm
+	
+GeneralHeaderStm ::=
+	Title Dataset | Dataset Title
+	
+GeneralTrailingStm ::= 
+	Filter? Scale? | Scale? Filter?
 
 ### High Level Grammar
 
 AddGraph ::=
-	"Add" Identifier AddGraph*
+	Add AddGraph*
+	
+Dataset ::=
+	"Dataset is" \" .* \"
 
 DefineCVStm ::=
 	Category Value 
@@ -193,9 +205,12 @@ DefineCVStm ::=
 DefineXYStm ::= 
 	X Y 
 	| Y X
+	
+Filter ::=
+	"Only use rows where" RAWSTRING FilterData
 
 Lines ::=
-	"Lines" "are" IDENTIFIER
+	"Lines" "are" IDENTIFIER 
 
 Order ::=
 	"Order" ("X"|"Y"|"Category") ("ascending" | "descending")
@@ -210,7 +225,13 @@ Title ::=
 
 Category ::=
 	"Category" Define
+
+FilterData ::=
+	("include" | "exclude" | ">" | ">=" | "<=" | "<") (NUM+ | "(" RAWSTRING ")")
 	
+Scale ::=
+	"Scale by" NUM+
+
 Value ::=
 	"Value" Define
 
@@ -221,17 +242,19 @@ Y ::=
 	"Y" Define Nickname?
 
 ### Identifier Grammar
+Add ::=
+	"Add" Identifier
 
 Define ::= 
 	"is" Identifier
 
-Nickname ::= "
-	as" Identifier
+Nickname ::= 
+	"as" Identifier
 
 ### Basic Grammar
 
 Identifier ::= 
-	IDENTIFIER+
+	\"IDENTIFIER+\"
 
 IDENTIFIER ::= 
 	(STRING|NUM)+
@@ -240,4 +263,7 @@ STRING ::=
 	"a"|"b"|"c"|"d"|"e"|"f"|"g"|"h"|"i"|"j"|"k"|"l"|"m"|"n"|"o"|"p"|"q"|"r"|"s"|"t"|"u"|"v"|"w"|"x"|"y"|"z"
 
 NUM ::=
-	0|1|2|3|4|5|6|7|8|9
+	0|1|2|3|4|5|6|7|8|9|"."
+	
+RAWSTRING ::=
+	\".+\"

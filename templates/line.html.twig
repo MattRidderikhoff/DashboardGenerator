@@ -24,19 +24,30 @@
                 display: true,
                 text: '{{ chart.getTitle() }}'
             },
+            layout: {
+                padding: {
+                    left: 0,
+                    right: 0,
+                    top: 0,
+                    bottom: 30
+                }
+            },
             scales:{
                 yAxes: [{
                     scaleLabel: {
                         display: true,
-                        fontSize: 15,
+                        fontSize: 13,
                         labelString: '{{ chart.getYLabel() }}'
                     }
                 }],
                 xAxes: [{
                     scaleLabel: {
                         display: true,
-                        fontSize: 15,
+                        fontSize: 13,
                         labelString: '{{ chart.getXLabel() }}'
+                    },
+                    ticks: {
+                        maxRotation: 0
                     }
                 }]
             }

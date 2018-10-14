@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}DashboardCreator{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="css/home.css">
+    {% endblock %}
+</head>
+<body>
+{% block body %}
+
+    <div class="render">
+        <form action="/render">
+            <button>View my charts</button>
+        </form>
+    </div>
+
+    <div class="home-all">
+        <div class="home-left">
+            <div>
+                <h2>Current Datasets</h2>
+
+                <form action="/">
+                    <div class="datasets-list">
+                        <select multiple id="datasets-select-list" name="remove_datasets[]">
+                            {% for dataset in datasets %}
+                                <option value="{{ dataset }}">{{ dataset }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <button>Remove dataset</button>
+                </form>
+
+
+                <form id="datasets-upload" action="/" method="post" enctype="multipart/form-data">
+                    Select .csv:
+                    <input type="file" name="add_dataset">
+                    <input type="submit" accept=".csv" name="add_dataset_button" value="Upload dataset">
+                </form>
+            </div>
+
+        </div>
+
+        <div class="home-right">
+            <div class="dsl">
+                <h2>Current program</h2>
+
+                <div id="program_display">
+                    {% for program_line in program %}
+                        <span>{{ program_line }}</span><br>
+                    {% endfor %}
+                </div>
+
+                <form id="change-program" action="/" method="post" enctype="multipart/form-data">
+                    Select .txt:
+                    <input type="file" name="new_program">
+                    <input type="submit" accept=".txt" name="change_program_button" value="Upload DSL file">
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
+</body>
+</html>

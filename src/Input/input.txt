@@ -8,7 +8,16 @@ Dataset is "avocado"
 Title is "exBarChart"
 X is "region" as "Region(US)"
 Y is "AveragePrice" as "Avg Price"
+Order X descending
 Only use rows where "year" <= 2017
+Scale by 0.1
+End
+
+Create Bar
+Dataset is "movies_2011"
+Title is "exBarChart1"
+X is "MPAA"
+Y is "Tickets"
 Order X descending
 End
 
@@ -29,11 +38,37 @@ Category is "Genre"
 Value is "Gross"
 Order Category descending
 Only use rows where "Genre" exclude ("?")
+Scale by 0.00000001
+End
+
+Create Bar
+Dataset is "movies_2011"
+Title is "exBarChart2"
+X is "MPAA"
+Y is "Gross"
+Order X descending
+End
+
+Create Bar
+Dataset is "movies_2011"
+Title is "exBarChart3"
+X is "Genre"
+Y is "Tickets"
+Order X descending
 End
 
 Create Group
 Title is "exGroup"
 Orient horizontal
 Add "exBarChart"
-Add "exLineChart"
+Add "exBarChart1"
+Add "Total Volume vs Year"
+End
+
+Create Group
+Title is "exGroup1"
+Orient vertical
+Add "exBarChart3"
+Add "exBarChart2"
+Add "exPieChart"
 End

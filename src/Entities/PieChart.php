@@ -73,6 +73,9 @@ class PieChart extends Chart
             case self::ONLY_USE_TOKEN:
                 $this->separateFilter($token_manager);
                 break;
+            case self::SCALE_KEY:
+                $this->scale_by = $token_manager->getNextToken();
+                break;
             default:
                 // discard value for unsupported attribute
                 $token_manager->getNextToken();
