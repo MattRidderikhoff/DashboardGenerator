@@ -16,12 +16,32 @@
                 display: true,
                 text: '{{ chart.getTitle() }}'
             },
-            scales: {
-                xAxes: [{
-                    ticks: {
-                        maxRotation: 0,
+            layout: {
+                padding: {
+                    left: 0,
+                    right: 0,
+                    top: 0,
+                    bottom: 30
+                }
+            },
+            scales:{
+                yAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        fontSize: 13,
+                        labelString: '{{ chart.getYLabel() }}'
                     }
                 }],
+                xAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        fontSize: 13,
+                        labelString: '{{ chart.getXLabel() }}'
+                    },
+                    ticks: {
+                        maxRotation: 0
+                    }
+                }]
             }
         }
     });

@@ -6,8 +6,8 @@ End
 Create Bar
 Dataset is "avocado"
 Title is "exBarChart"
-X is "region"
-Y is "AveragePrice"
+X is "region" as "Region(US)"
+Y is "AveragePrice" as "Avg Price"
 Order X descending
 Only use rows where "year" <= 2017
 Scale by 0.1
@@ -24,7 +24,7 @@ End
 Create Line
 Dataset is "avocado"
 Title is "Total Volume vs Year"
-X is "year"
+X is "year" as "Year"
 Y is "Total Volume"
 Lines are "region"
 Order X descending

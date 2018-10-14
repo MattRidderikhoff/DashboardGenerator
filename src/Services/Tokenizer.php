@@ -49,7 +49,15 @@ class Tokenizer
     }
 
     private function generateSubStatementTokens($remaining_input_line, $literal) {
-        if ($literal == Chart::ONLY_USE_TOKEN) {
+        if (($literal == Chart::X_AXIS_TOKEN || $literal == Chart::Y_AXIS_TOKEN) && strpos($remaining_input_line, Chart::ALIAS_TOKEN) !== false) {
+            $sub_tokens = $this->separateLiteral(Chart::ALIAS_TOKEN, $remaining_input_line);
+            $return_tokens = [];
+            foreach ($sub_tokens as $sub_token) {
+                $return_tokens[] = trim($sub_token);
+            }
+
+            return $return_tokens;
+        } elseif ($literal == Chart::ONLY_USE_TOKEN) {
 
             $sub_tokens = [];
             foreach (self::LOGIC_LITERALS as $sub_literal) {

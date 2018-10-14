@@ -17,6 +17,7 @@ abstract class Chart extends Node
     const X_ORDER_TOKEN = 'Order X';
     const Y_ORDER_TOKEN = 'Order Y';
     const ONLY_USE_TOKEN = 'Only use rows where';
+    const ALIAS_TOKEN = 'as';
 
     const DESCENDING_KEY = 'descending';
     const LESS_THAN_KEY = '<';

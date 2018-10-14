@@ -12,8 +12,6 @@ class LineChart extends Chart
 {
     const LINE_TOKEN = 'Lines are';
 
-    private $x_axis;
-    private $y_axis;
     private $line;
     private $x_order;
     private $y_order;
@@ -72,9 +70,19 @@ class LineChart extends Chart
                 break;
             case self::X_AXIS_TOKEN:
                 $this->x_axis = $token_manager->getNextToken();
+                $this->x_label = $this->x_axis;
+                if ($token_manager->checkNextToken(self::ALIAS_TOKEN)) {
+                    $token_manager->getNextToken();
+                    $this->x_label = $token_manager->getNextToken();
+                }
                 break;
             case self::Y_AXIS_TOKEN:
                 $this->y_axis = $token_manager->getNextToken();
+                $this->y_label = $this->y_axis;
+                if ($token_manager->checkNextToken(self::ALIAS_TOKEN)) {
+                    $token_manager->getNextToken();
+                    $this->y_label = $token_manager->getNextToken();
+                }
                 break;
             case self::LINE_TOKEN:
                 $this->line = $token_manager->getNextToken();
