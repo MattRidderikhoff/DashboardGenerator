@@ -17,7 +17,7 @@ abstract class Chart extends Node
     const X_ORDER_TOKEN = 'Order X';
     const Y_ORDER_TOKEN = 'Order Y';
     const ONLY_USE_TOKEN = 'Only use rows where';
-    const ALIAS_TOKEN = 'as';
+    const ALIAS_TOKEN = ' as ';
 
     const DESCENDING_KEY = 'descending';
     const LESS_THAN_KEY = '<';
@@ -25,8 +25,8 @@ abstract class Chart extends Node
     const LESS_THAN_OR_EQUAL_KEY = '>=';
     const GREATER_THAN_OR_EQUAL_KEY = '<=';
     const EQUAL_KEY = '=';
-    const INCLUDE_KEY = 'include';
-    const EXCLUDE_KEY = 'exclude';
+    const INCLUDE_KEY = 'includes';
+    const EXCLUDE_KEY = 'excludes';
     const SCALE_KEY = 'Scale by';
 
     protected $data = [];
