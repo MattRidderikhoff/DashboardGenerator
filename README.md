@@ -227,7 +227,7 @@ Category ::=
 	"Category" Define
 
 FilterData ::=
-	("include" | "exclude" | ">" | ">=" | "<=" | "<") (NUM+ | "(" RAWSTRING ")")
+	("include" | "exclude" | ">" | ">=" | "<=" | "<") Literal ("and" Literal)*
 	
 Scale ::=
 	"Scale by" NUM+
@@ -267,3 +267,6 @@ NUM ::=
 	
 RAWSTRING ::=
 	\".+\"
+
+Literal ::=
+	NUM+|RAWSTRING
