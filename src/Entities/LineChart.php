@@ -10,7 +10,7 @@ namespace App\Entities;
 
 class LineChart extends Chart
 {
-    const LINE_TOKEN = 'Lines are';
+    const LINE_TOKEN = 'Lines are defined by';
 
     private $line;
     private $x_order;

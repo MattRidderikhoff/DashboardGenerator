@@ -5,70 +5,33 @@ End
 
 Create Bar
 Dataset is "avocado"
-Title is "exBarChart"
-X is "region" as "Region(US)"
-Y is "AveragePrice" as "Avg Price"
-Order X descending
-Only use rows where "year" <= 2017
-Scale by 0.1
-End
-
-Create Bar
-Dataset is "movies_2011"
-Title is "exBarChart1"
-X is "MPAA"
-Y is "Tickets"
-Order X descending
+Title is "Price by Year"
+X is "year"
+Y is "AveragePrice"
+Order X ascending
 End
 
 Create Line
 Dataset is "avocado"
-Title is "Total Volume vs Year"
-X is "year" as "Year"
+Title is "Volume vs Year"
+X is "year"
 Y is "Total Volume"
-Lines are "region"
-Order X descending
-Only use rows where "region" include ("Albany", "Atlanta", "BaltimoreWashington")
+Lines are defined by "region"
+Only use rows where "region" includes "Albany" and "Detroit" and "NewYork"
 End
 
 Create Pie
 Dataset is "movies_2011"
-Title is "exPieChart"
-Category is "Genre"
+Title is "Gross by MPAA rating"
+Category is "MPAA"
 Value is "Gross"
-Order Category descending
-Only use rows where "Genre" exclude ("?")
 Scale by 0.00000001
 End
 
-Create Bar
-Dataset is "movies_2011"
-Title is "exBarChart2"
-X is "MPAA"
-Y is "Gross"
-Order X descending
-End
-
-Create Bar
-Dataset is "movies_2011"
-Title is "exBarChart3"
-X is "Genre"
-Y is "Tickets"
-Order X descending
-End
-
 Create Group
-Title is "exGroup"
+Title is "My Avocado Report Chart"
 Orient horizontal
-Add "exBarChart"
-Add "exBarChart1"
-Add "Total Volume vs Year"
+Add "Price by Year"
+Add "Volume vs Year"
 End
 
-Create Group
-Title is "exGroup1"
-Orient vertical
-Add "exBarChart3"
-Add "exBarChart2"
-Add "exPieChart"
-End
